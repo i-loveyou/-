@@ -1,0 +1,222 @@
+*{
+	padding:0;
+	margin:0;
+	text-decoration:none;
+	list-style:none;
+}
+body{
+	font: 12px/1.5 '微软雅黑', '宋体', STHeiTi,Arial, Helvetica, sans-serif;
+	color:#333;
+}
+.wrap{
+	width:914px;
+	margin:0 auto;
+}
+
+/*header*/
+.header .header_top{
+	height:30px;
+	background:#e9e9e9;
+	border:1px solid #ccc;
+	border-top:none;
+}
+.header .logo{
+	padding:12px 0 16px 0;
+}
+.header .logo .img2{
+	float:right;
+}
+
+/*banner*/
+
+/*body*/
+.body{
+	padding-top:20px;
+	height:850px;
+}
+.body .body_left{
+	width:327px;
+	float:left;
+}
+/*.body .body_left .video{
+	width:327px;
+	height:327px;
+	background:red;
+}*/
+.body .body_left .video img{
+	width:327px;
+	height:327px;
+}
+
+.body .body_left .hotel{
+	width:310px;
+	height:203.6px;
+	background:#ebebe9;
+	margin-top:7px;
+	border:1px solid darkgray;
+	border-top:none;
+	border-bottom-right-radius:10px;
+	border-bottom-left-radius: 10px;
+	padding:12px 0 10px 15px;
+}
+.body .body_left .hotel .p{
+	background:url("../images/hm_lmxian.jpg") no-repeat left bottom;
+	padding-bottom:7px;
+}
+.body .body_left .hotel .p a{
+	color:#ffffff;
+	display:inline-block;
+	background:black;
+	padding:1px 4px 3px;
+}
+.body .body_left .hotel ul{
+	margin-top:10px;
+	overflow:hidden;
+}
+.body .body_left .hotel ul li{
+	float:left;
+	background:#4b4b4b;
+	color:#fff;
+	width:144px;
+	margin:0 7px 5px 0;
+}
+.body .body_left .hotel ul li a{
+	float:left;
+}
+.body .body_left .hotel ul p{
+	padding-top:25px;
+	padding-left:4px;
+}
+
+.body .body_left .prize{
+	width:327px;
+	height:289.49px;
+	margin-top:12px;
+}
+.body .body_left .prize h3{
+	line-height:33px;
+	background:#363636;
+	padding-left:10px;
+	font-size:15px;
+	color:#fff;
+}
+.body .body_left .prize .prize_box{
+	border:1px solid darkgray;
+}
+.body .body_left .prize .prize_box img{
+	width:100%;
+}
+.body .body_left .prize .prize_box .kan{
+	padding-top:20px;
+	padding-left:10px;
+	overflow: hidden;
+}
+.body .body_left .prize .prize_box .kan .kan_left{
+	width:130px;
+	float:left;
+}
+.body .body_left .prize .prize_box .kan .kan_left h4{
+	line-height:15px;
+	font-size:14px;
+	border-left:4px solid red;
+	padding-left:5px;
+}
+.body .body_left .prize .prize_box .kan .kan_right{
+	width:130px;
+	float:left;
+	margin-left:25px;
+}
+.body .body_left .prize .prize_box .kan .kan_right h4{
+	line-height:15px;
+	font-size:14px;
+	border-left:4px solid red;
+	padding-left:5px;
+}
+
+.body .body_right{
+	width:573px;
+	float:right;
+	height:802.6px;
+}
+.body .body_right .hot{
+	width:573px;
+}
+.body .body_right .hot h3{
+	line-height:33px;
+	padding-left:12px;
+	background:#363636;
+	color:#fff;
+}
+.body .body_right .hot h3 a{
+	color:#fff;
+	font-size:12px;
+	margin-left:6px;
+}
+.body .body_right .hot img{
+	width:573px;
+}
+
+.body .body_right .chi{
+	width:567px;
+	height:226px;
+	border:3px solid #d4d4d4;
+}
+.body .body_right .chi img{
+	vertical-align: middle;
+}
+.body .body_right .chi ul li{
+	float:left;
+	width:237px;
+	padding:20px 22px 20px 20px;
+}
+.body .body_right .chi ul li a{
+	float:left;
+	border:2px solid #d4d4d4;
+}
+.body .body_right .chi ul li p{
+	text-indent:2em;
+}
+.body .body_right .chi .zi{
+	overflow:hidden;	/*记得清除浮动*/
+	padding-left:10px;
+}
+.body .body_right .chi .zi .color{
+	color:red;
+}
+
+.body .body_right .tu{
+	width:573px;
+	height:426px;
+	padding-top:10px;
+}
+.body .body_right .tu .f1{
+	width:282px;
+	height:416px;
+	background:gray;
+	float:left;
+}
+.body .body_right .tu img{
+	vertical-align: middle;
+}
+.body .body_right .tu .f2{
+	width:282px;
+	height:416px;
+	background:gray;
+	float:right;
+}
+
+/*footer*/
+.footer{
+	text-align:center;
+	background:#383838;
+	color:white;
+	padding:6px 0;
+	margin-top:40px;
+	height:57.2px;
+}
+.footer p a{
+	color:white;
+}
+.footer .p{
+	margin-top:10px;
+}
