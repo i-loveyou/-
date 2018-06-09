@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="head">
+		<div class="nav">
+			<div class="nav-content">
+				<div class="nav-right">
+				<ul class="ul">
+					<li>欢迎光临易和生活港</li>
+					<li class="space">|</li>
+					<li>我是商家</li>
+					<li class="space">|</li>
+					<li>400-100-0907</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		<div class="extra">
+			<a href="#" class="logo">
+				<img src="images/logo.png" alt="">
+			</a>
+			<div class="logo-marks">
+				<a href="#">登录</a>
+				<span class="space2">|</span>
+				<a href="#">注册</a>
+			</div>
+		</div>
+	</div>
+	<div class="body">
+		<div class="guide-page">
+			<div class="v">
+				<div class="guide-mark">易和生活，纵想品质</div>
+				<div class="guide-search">
+					<div class="inp-area">
+						<input type="text" id="into" placeholder="请选择你所在城市的首字母(请用英文输入)">
+						<div class="city-s">太原</div>
+					</div>
+					<button class="inp-ok">进入易和</button>
+				</div>
+				<div class="city-lists" id="dian">
+					<i class="icon"></i>
+					<div class="city-list" id="jl">
+						<div class="city-group">
+							<div class="group-title">
+								热门城市：
+								<a href="#">哈尔滨</a>
+								<a href="#">烟台</a>
+							</div>
+						</div>
+						<ul class="group-list">
+							<li><span>A</span><a href="#">安阳</a></li>
+							<li><span>B</span><a href="#">北京</a></li>
+							<li><span>C</span><a href="#">长春</a></li>
+							<li><span>D</span><a href="#">丹东</a></li>
+							<li><span>E</span><a href="#"></a></li>
+							<li><span>F</span><a href="#">抚顺</a></li>
+							<li><span>G</span><a href="#"></a></li>
+							<li><span>H</span><a href="#">哈尔滨</a></li>
+							<li><span>I</span><a href="#"></a></li>
+							<li><span>J</span><a href="#"></a></li>
+							<li><span>K</span><a href="#"></a></li>
+							<li><span>L</span><a href="#"></a></li>
+							<li><span>M</span><a href="#"></a></li>
+							<li><span>N</span><a href="#"></a></li>
+							<li><span>O</span><a href="#"></a></li>
+							<li><span>P</span><a href="#"></a></li>
+							<li><span>Q</span><a href="#"></a></li>
+							<li><span>R</span><a href="#"></a></li>
+							<li><span>S</span><a href="#"></a></li>
+							<li><span>T</span><a href="#"></a></li>
+							<li><span>U</span><a href="#"></a></li>
+							<li><span>V</span><a href="#"></a></li>
+							<li><span>W</span><a href="#"></a></li>
+							<li><span>X</span><a href="#"></a></li>
+							<li><span>Y</span><a href="#"></a></li>
+							<li><span>Z</span><a href="#"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="bottom">
+			<div class="ele1">版权所有 © 2016易和生活港&emsp;保留所有权利&emsp;|&emsp;鲁ICP备：&emsp;16022180号-1</div>
+			<div class="ele2">易和生活&emsp;众享品质</div>
+		</div>
+	</div>
+	<script>
+		window.onload=function(){
+			var odian=document.getElementById('dian');
+			var ointo=document.getElementById('into');
+			var ojl=document.getElementById('jl');
+
+			ointo.onclick=function(){
+				odian.style.display="block";
+			}
+
+			ointo.onkeyup= function(e){
+				// var x = event.which || event.keyCode;
+				var shuru = ointo.value.charAt(0);
+				var xian = shuru.toUpperCase();
+				var x= xian.charCodeAt();
+				x = x-65;
+				var juli = x*53.5+71;
+				if(0<=x<25)
+				{
+					if(x=0){
+						setInterval(ojl.scrollTo(0,71),1000);
+					}
+					setInterval(ojl.scrollTo(0,juli),3000);
+    					// alert(x);
+				}
+			}
+
+			// ointo.onkeydown=function(){
+			// 	var shuru = ointo.value.charAt(0);
+			// 	var xian = shuru.toUpperCase();
+			// 	var zhi = xian.charCodeAt();
+			// 	alert(zhi);
+			// }
+
+		}
+	</script>
+</body>
+</html>
