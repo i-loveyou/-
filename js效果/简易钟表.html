@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.box{
+			width:300px;
+			height:200px;
+			text-align:center;
+			margin:200px auto;
+			border-radius:10px;
+			font-size:20px;
+			color:white;
+			background:black;
+		}
+		.box p:nth-child(1){
+			padding-top:40px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p id="year"></p>
+		<p id="week"></p>
+		<p id="times"></p>
+	</div>
+	<script>
+		window.onload = function(){
+			function demo(){
+			var oyear = document.getElementById('year');
+			var oweek = document.getElementById('week');
+			var otimes = document.getElementById('times');
+
+			var mydate = new Date();
+			var y = mydate.getFullYear();
+			var m = mydate.getMonth()+1;
+			var d = mydate.getDate();
+			var w = mydate.getDay();
+			var h = mydate.getHours();
+			var mi = mydate.getMinutes();
+			var miao = mydate.getSeconds();
+		
+			// alert(w);
+			function time(x){
+				if(x>10){
+					return ""+x;
+				}else{
+					return "0"+x;
+				}
+			}
+			oyear.innerHTML = y+"年"+time(m)+"月"+time(d)+"日";
+			switch(w){
+				case 1:
+					w="星期一"
+					break;
+				case 2:
+					w="星期二"
+					break;
+				case 3:
+					w="星期三"
+					break;
+				case 4:
+					w="星期四"
+					break;
+				case 5:
+					w="星期五"
+					break;
+				case 6:
+					w="星期六"
+					break;
+				case 7:
+					w="星期日"
+					break;
+			}
+			oweek.innerHTML = w;
+
+			otimes.innerHTML = time(h)+" : "+time(mi)+" : "+time(miao);
+		}
+		demo();		//如果注释这行代码，网页显示的第一秒是空白
+		setInterval(function(){
+			demo()
+		},1000);
+		}
+	</script>
+</body>
+</html>

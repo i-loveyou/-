@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		#box{
+			width:500px;
+			height:300px;
+			border:1px solid;
+			margin:50px auto;
+			overflow:hidden;
+		}
+		#content{
+			width:4000px;
+			height:300px;
+			border:1px solid red;
+			position:relative;
+			left:0;
+		}
+		#content>div{
+			width:500px;
+			height:300px;
+			float:left;
+		}
+		#content>div>img{
+			width:100%;
+			height:300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="content">
+			<div id="img"><img src="img/1.jpeg" alt=""></div>
+			<div id="img"><img src="img/2.jpeg" alt=""></div>
+			<div id="img"><img src="img/3.jpeg" alt=""></div>
+			<div id="img"><img src="img/4.jpeg" alt=""></div>
+			<div id="img"><img src="img/5.jpeg" alt=""></div>
+			<div id="img"><img src="img/6.jpeg" alt=""></div>
+
+			<div id="img"><img src="img/1.jpeg" alt=""></div>
+		</div>
+	</div>
+
+	<script>
+		window.onload = function(){
+			var content = document.getElementById('content');
+			var img = document.getElementById('img');
+			var x = 0;
+			var a = setInterval(demo,20);
+			function demo(){
+				x -=5;
+				if(x%500 == 0){
+					clearInterval(a);
+
+					setTimeout(function(){
+						a = setInterval(demo,20);
+					},3000);
+				}
+				if(x == -3000){
+					x=0;
+				}
+
+				content.style.left = x + "px";
+			};
+			img.onmouseover = function(){
+				clearInterval(a);	
+			}
+			img.onmouseout = function(){
+				if(x%500 == 0){
+					setTimeout(function(){
+						a = setInterval(demo,20);
+					},3000);
+				}else{
+					setTimeout(function(){
+						a = setInterval(demo,20);
+					},500);
+				}
+			}
+
+		}
+	</script>
+</body>
+</html>

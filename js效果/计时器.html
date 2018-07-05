@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#d1{
+			width:200px;
+			height:100px;
+			background:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="d1"></div>
+	<script>
+		window.onload = function(){
+			// 属于BOM中window(窗口对象)的方法。一般window对象的属性和方法，window可省略
+			//循环计时器	setInterval(func,time)每间隔time毫秒重复执行func函数内的代码
+			
+			var a =setInterval(function(){
+				d1.style.background = randColor();
+			},1);
+			function randColor(){
+				return "rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")";
+			}
+
+			// clearInterval:清除循环计时器
+			var div = document.getElementById('d1');
+			//页面每添加一个计时器，对应计时器函数都会返回一个数值，并且伴随新的计时器添加，该数值每次会递增一。该数值可认为是标记当前页面计时器是页面中的第几个计时器（谷歌从一开始，火狐从二开始）
+			//或者给计时器一个定义，然后清除
+			div.onclick = function(){
+				clearInterval(a);
+			}
+
+			//延迟计时器
+			setTimeout(function(){
+				alert("ok");
+			},2000)
+		}
+	</script>
+</body>
+</html>

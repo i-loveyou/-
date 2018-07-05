@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#btn{
+				width: 100px;
+				height: 30px;
+				outline: none;
+				border: none;
+				background: green;
+				cursor: pointer;
+				color:white;
+			}
+			.res{
+				width: 400px;
+				height: 50px;
+				margin-top: 25px;
+				display: none;
+			}
+			.res span{
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background: red;
+				color: white;
+				text-align: center;
+				line-height: 50px;
+				display: inline-block;
+			}
+			.res span.blue{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<button id="btn">随机生成</button>
+		<div class="res">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span class="blue"></span>
+		</div>
+
+
+		<script type="text/javascript">
+			//获取元素
+			var btn = document.getElementById("btn");
+			var resDiv = document.getElementsByClassName("res")[0];
+			var spans = document.getElementsByTagName("span");
+			
+			//绑定点击事件
+			btn.onclick = function() {
+				resDiv.style.display = "block"
+				//定义数组  存放数字
+				var nums = [];
+				//随机生成双色球
+				while(nums.length != 6){
+					//生成红球数字
+					var n = randomNum(1,33);
+					//假定数组中没有该数字
+					var bol = false;
+					//遍历数组 判断是否出现重复数字
+					for (var i = 0;i < nums.length;i++){	//判断状态是true还是false
+						if (nums[i] == n){
+							bols = true; //状态置反  表示该数字已存在
+							break;
+						}
+					}
+					if(bol == false){
+						//代表该数字不是重复数字  则添加到数组中
+						nums.push(n);
+					}	
+				}
+				//排序
+				nums.sort(function(x,y){return x-y;});
+				//若数字小于10 以0X形式展示
+				var numArr = nums.map(function(item){	//map()是数组的一个方法，它创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+					if(item < 10){
+						return "0"+item;
+					}else{
+						return item;
+					}
+				});
+				//在随机生成一个蓝球数字
+				var m = randomNum(1,16);
+				if(m < 10){
+					m = "0" + m;
+				}
+				numArr.push(m);
+				//显示
+				for (var i=0;i<numArr.length;i++) {
+					spans[i].innerHTML = numArr[i];
+				}
+				
+			}
+			//定义函数 随机整数[x,y]
+			function randomNum(x,y) {
+				return Math.floor(Math.random() * (y - x + 1) + x);
+			}
+			
+
+			
+		</script>
+	</body>
+</html>

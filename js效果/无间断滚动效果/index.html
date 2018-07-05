@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无间断滚动效果</title>
+	<style>
+		.wrap{
+			position:relative;
+			width:500px;
+			height:300px;
+			border:1px solid;
+			overflow:hidden;
+			margin:200px auto;
+		}
+		.con{
+			position:absolute;
+			left:0;
+			width:9999px;
+		}
+		.con>img{
+			width:200px;
+			float:left;
+			height:300px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 无间断滚动实现
+	结构上：
+	1.显示区
+	2.内容区（足够大） 
+	JS:
+	借助循环方法，如计时器 实现内容区滚动
+	为了避免滚动到最后一张后面出现空白，可复制内容区的内容
+	当第一遍的内容滚动完成后，迅速重置内容区的滚动位置还原为初始0
+	-->
+	<div class="wrap">
+		<div class="con">
+			<img src="img/1.jpeg" alt="">
+			<img src="img/2.jpeg" alt="">
+			<img src="img/3.jpeg" alt="">
+			<img src="img/4.jpeg" alt="">
+			<img src="img/5.jpeg" alt="">
+			<img src="img/6.jpeg" alt="">
+		</div>
+	</div>
+
+	<script>
+		var conDiv = document.getElementsByClassName('con')[0];
+		//记录水平滚动位置
+		var x= 0;
+		conDiv.innerHTML += conDiv.innerHTML;
+		setInterval(function(){
+			x--;
+			if(x <= -1200){
+				x=0;
+			}
+			conDiv.style.left = x + "px";
+		},10)
+	</script>
+</body>
+</html>

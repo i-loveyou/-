@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<style>
+		.box{
+			width:300px;
+			height:200px;
+			line-height:200px;
+			background:black;
+			color:white;
+			margin:auto;
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p id="shijian">剩余时间：01:20:30</p>
+	</div>
+
+	<script>
+		window.onload = function(){
+			var time = 39000;
+			function times(){
+				var shijian = document.getElementById('shijian');
+				var hour = 0;
+				var minute = 0;
+				var second = 0;
+
+				if(time>0){
+					hour = Math.floor(time / (60*60));
+					minute = Math.floor(time/60 - 60*hour);
+					second = Math.floor(time - 60*60*hour - 60*minute);
+				}
+				function demo(x){
+					if(x >9){
+						return ""+x;
+					}else{
+						return "0"+x;
+					}
+				}
+				// alert(demo(minute));	
+				// alert(second);
+				shijian.innerHTML = "剩余时间：" + demo(hour) +" : "+ demo(minute) +" : " +demo(second);
+				time--;	
+			}
+			times();
+			setInterval(function(){
+				times();
+			},1000)
+		}
+	</script>
+</body>
+</html>

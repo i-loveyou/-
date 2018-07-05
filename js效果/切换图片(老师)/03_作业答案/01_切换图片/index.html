@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<!-- 强制IE浏览器采用最新的edge引擎解析，chrome采用最新版本 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!-- 双模式浏览器优先使用 webkit -->
+		<meta name="renderer" content="webkit">
+		<!-- 移动端视窗设置 -->
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/> -->
+		<!-- title 标题 -->
+		<title>切换图片</title>
+		<!-- 描述 -->
+		<meta name="description" content="你的描述内容，一段完整的描述，150字以内">
+		<!-- 关键字 -->
+		<meta name="keywords" content="多个关键词用英文,号分割">
+		<!-- 引入CSS -->
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	</head>
+
+	<body>
+		<img src="img/1.jpg" id="girl" /><br />
+		<input type="button" value="左" id="left" />
+		<input type="button" value="右" id="right" />
+
+		<input type="button" value="开始" id="start" />
+		<input type="button" value="结束" id="end" />
+
+		<script type="text/javascript">
+			//记录是第几张图片
+			var i = 1;
+			//获取img
+			var girl = document.getElementById("girl");
+			//左按钮
+			var left = document.getElementById("left");
+			left.onclick = function() {
+				i--;
+				if(i == 0) {
+					i = 8;
+				}
+				girl.src = "img/" + i + ".jpg";
+			}
+			//右按钮
+			var right = document.getElementById("right");
+			right.onclick = function() {
+				i++;
+				if(i == 9) {
+					i = 1;
+				}
+				girl.src = "img/" + i + ".jpg";
+			}
+			//开始按钮
+			var start = document.getElementById("start");
+			var timer = null;
+			start.onclick = function() {
+				if(timer == null) {
+					timer = setInterval(function() {
+						i--;
+						if(i == 0) {
+							i = 8;
+						}
+						girl.src = "img/" + i + ".jpg";
+					}, 100);
+				}
+			}
+			//结束按钮
+			var end = document.getElementById("end");
+			end.onclick = function() {
+				clearInterval(timer);
+				timer = null;
+			}
+		</script>
+	</body>
+
+</html>

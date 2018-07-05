@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{padding:0;margin:0;}
+		#btn{
+			width:100px;
+			height:30px;
+			color:font;
+			background:orange;
+			border:0;
+			cursor: pointer;
+			margin-top:40px;
+			margin-left:400px;
+		}
+		#box{
+			width:500px;
+			height:50px;
+			text-align:center;
+			margin-left:200px;
+			margin-top:40px;
+		}
+		#box span{
+			width:50px;
+			height:50px;
+			line-height:50px;
+			display:inline-block;
+			border:1px solid red;
+			border-radius:50%;
+			color:white;
+			background:red;
+		}
+		#box span:nth-child(7){
+			background:blue;
+			border:1px solid blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<span id="span1">1</span>
+		<span id="span2">2</span>
+		<span id="span3">3</span>
+		<span id="span4">4</span>
+		<span id="span5">5</span>
+		<span id="span6">6</span>
+		<span id="span7">34</span>
+	</div>
+	<button id="btn">随机一注</button>
+
+	<script>
+		window.onload = function(){
+			var btn = document.getElementById('btn');
+
+			btn.onclick = function(){
+				// alert("ok");
+			var arr=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33];
+			var shu2 = parseInt(Math.random()*16+1);
+			function randomsort(a,b){
+				return Math.random() > 0.5 ? -1 : 1;
+			}
+			var arr2 = arr.sort(randomsort);
+			var arr3 = arr2.slice(0,6);
+			// console.log(arr3);
+			// console.log(shu2);
+			function sortNumber(a,b){
+				return a-b;
+			}
+			var arr4 = arr3.sort(sortNumber);
+			// console.log(arr4);
+				span1.innerHTML = arr4[0];
+				span2.innerHTML = arr4[1];
+				span3.innerHTML = arr4[2];
+				span4.innerHTML = arr4[3];
+				span5.innerHTML = arr4[4];
+				span6.innerHTML = arr4[5];
+				span7.innerHTML = shu2;
+			}
+			
+			
+		}
+	</script>
+</body>
+</html>

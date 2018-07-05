@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width:220px;
+			height:220px;
+			margin:50px auto;
+			overflow:hidden;
+		}
+		#content{
+			width:2500px;
+			position:relative;
+			left:0;
+		}
+		#content div{
+			width:220px;
+			height:220px;
+			float:left;
+		}
+		#content div img{
+			width:100%;
+			height:220px;
+		}
+		.anniu{
+			width:200px;
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="content">
+			<div><img src="img/1.jpg" alt=""></div>
+			<div><img src="img/2.jpg" alt=""></div>
+			<div><img src="img/3.jpg" alt=""></div>
+			<div><img src="img/4.jpg" alt=""></div>
+			<div><img src="img/5.jpg" alt=""></div>
+			<div><img src="img/6.jpg" alt=""></div>
+			<div><img src="img/7.jpg" alt=""></div>
+			<div><img src="img/8.jpg" alt=""></div>
+			<div><img src="img/1.jpg" alt=""></div>
+		</div>
+	</div>
+	<div class="anniu">
+		<button id="zuo">左</button>
+		<button id="you">右</button>
+		<button id="start">开始</button>
+		<button id="end">结束</button>
+	</div>
+	<script>
+		window.onload = function(){
+			var content = document.getElementById('content');
+			var zuo = document.getElementById('zuo');
+			var you = document.getElementById('you');
+			var start = document.getElementById('start');
+			var end = document.getElementById('end');
+
+			var x=0;
+			zuo.onclick = function(){
+				x -=220;
+				content.style.left = x +"px";
+				if(x == -1760){
+					x=0;
+				}
+			}
+			//向右滑动时，左边图片是为空的
+			you.onclick = function(){
+				if(x == 0){
+					x=-1760;
+				}
+				x +=220;
+				content.style.left = x +"px";
+			}
+			function play(){
+				function play_tu(){
+					x -=220;
+					if(x == -1760){
+					x=0;
+				}
+					content.style.left = x + "px";
+				}
+				var a= setInterval(play_tu,100);
+				this.stop = function(){		//将stop()设置成全局变量
+					clearInterval(a);
+				}
+			}
+			//利用m来进行判断点击次数，使点击一次后点相反事件才能再次执行
+			var m = 0;
+			start.onclick = function(){
+				if(m == 0){
+					play();
+					return m++;	
+				}
+			};
+			end.onclick = function(){
+				if(m == 1){
+					stop();
+					return m --;
+				}
+			};
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		.slide-wrap{
+			width:500px;
+			height:300px;
+			margin:20px auto;
+			border:2px solid;
+			overflow:hidden;
+		}
+		.slide-con{
+			position:relative;
+			top:0;
+			width:3500px;
+		}
+		.slide-item{
+			/*float:left;*/
+			width:500px;
+		}
+		.slide-item img{
+			width:100%;
+			height:300px;
+			vertical-align: top;
+		}
+	</style>
+</head>
+<body>
+	<div class="slide-wrap">
+		<div class="slide-con">
+			<div class="slide-item"><img src="img/1.jpeg" alt=""></div>
+			<div class="slide-item"><img src="img/2.jpeg" alt=""></div>
+			<div class="slide-item"><img src="img/3.jpeg" alt=""></div>
+			<div class="slide-item"><img src="img/4.jpeg" alt=""></div>
+			<div class="slide-item"><img src="img/5.jpeg" alt=""></div>
+			<div class="slide-item"><img src="img/6.jpeg" alt=""></div>
+			<!-- 在最后一张的后面多添加一张和第一章一样的内容，避免后面的空白，以实现循环播放 -->
+			<div class="slide-item"><img src="img/1.jpeg" alt=""></div>
+		</div>
+	</div>
+
+	<script>
+		var conDiv = document.getElementsByClassName('slide-con')[0];
+		var a = setInterval(play,10);
+		//实现图片播放的功能
+		var x=0;
+		function play(){
+			//首先先无缝偏移
+			x -= 5;
+			// 代表偏移完一整张的距离
+			// 偏移正好第一张图的位置开始清除计时器
+			if(x%300 ==0){
+				//清除计时器，暂停播放
+				clearInterval(a);
+
+				setTimeout(function(){
+					a = setInterval(play,10);		//3秒后开启计时器
+				},3000)
+			}
+			if(x == -1800){
+				x=0;	//最后一张切换完第一张回到最后
+			}
+			conDiv.style.top = x +"px";
+		}
+	</script>
+</body>
+</html>
