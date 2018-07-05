@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box1{
+			width:200px;
+			height:200px;
+			border:1px solid red;
+		}
+		.box1:before{
+			content:'';
+			height:100%;
+  			visibility: hidden;
+    			vertical-align: middle;
+    			display:inline-block;
+		}
+		.box1 .p{
+			background:gray;
+			display:inline-block;
+		}
+
+		.box2{
+			width:200px;
+			height:200px;
+			border:1px solid red;
+			display:table-cell;
+			vertical-align: middle;
+		}
+		.box2 .p2{
+			background:gray;
+			display:inline-block;
+		}
+
+		.box3{
+			width:200px;
+			height:200px;
+			border:1px solid red;
+			display:flex;
+           			justify-content:center;
+            			align-items:center;
+		}
+		.box3 .p3{
+			background:gray;
+			display:inline-block;
+		}
+
+		.box4{
+			width:200px;
+			height:200px;
+			border:1px solid red;
+			position:relative;
+		}
+		.box4 .p4{
+			background:gray;
+			display:inline-block;
+			position:absolute;
+			left:0;
+			right:0;
+			top:0;
+			bottom:0;
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<div class="p">
+			<p>dwadawdw</p>
+		</div>
+	</div>
+	<div class="box2">
+		<div class="p2">
+			<p>wdwadawdad</p>
+		</div>
+	</div>
+	<div class="box3">
+		<div class="p3">
+			<p>wdwadawdad</p>
+		</div>
+	</div>
+	<div class="box4">
+		<div class="p4">
+			<p>wdwadawdad</p>
+		</div>
+	</div>
+</body>
+</html>
