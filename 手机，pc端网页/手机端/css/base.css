@@ -1,0 +1,81 @@
+/*选择器*/
+img{
+	vertical-align: middle;
+}
+a{
+	text-decoration: none;
+}
+body{
+	font: 12px/1.5 "微软雅黑", '宋体', STHeiTi,Arial, Helvetica,sans-serif;
+	color: #fff;
+	background: #f2f2f2;
+}
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,em,textarea,p,th,td,span{margin:0px;padding:0px;}
+
+li{
+	list-style-type: none;
+}
+
+/*所有a*/
+a{text-decoration:none;color:#000;}
+a:link {color:#000;text-decoration:none;}
+a:visited {color:#000;text-decoration:none;}
+a:hover {color:#666;text-decoration:underline;}
+a:active {color:#000;text-decoration:none;}
+
+/*特殊情况*/
+a.list:link {color:#ccc;text-decoration:none;}
+a.list:visited {color:#ccc;text-decoration:none;}
+a.list:hover {color:#fff;text-decoration:underline;}
+a.list:active {color:#000;text-decoration:none;}
+
+
+
+.fl{float: left;}
+.fr{float: right;}
+
+.clear{overflow: hidden;}
+
+.fontBold{font-weight:bold;}
+.fontLighter{font-weight:lighter;}
+
+
+.clearfix:after{
+	content: "\20";
+	height: 0;
+	overflow: hidden;
+
+	display: block;
+	clear: both;
+}
+
+/*
+ie678下清除浮动的方式
+*：是ie的标记，只有ie认识解析后面的属性
+
+*/
+.clearfix{
+	*zoom: 1;
+}
+
+
+
+.middle:before{
+	content: "";
+	overflow: hidden;
+	/*隐藏元素，但是保留位置*/
+	visibility: hidden;
+
+	display: inline-block;
+	height: 100%;
+	width: 0;
+	vertical-align: middle;
+}
+/*省略号...*/
+.ellipsis {
+	/*规定段落中的文本不进行换行：*/
+	white-space: nowrap;
+	overflow: hidden;
+	/*用省略号替换*/
+	text-overflow: ellipsis;
+}
