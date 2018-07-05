@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.slide_show{
+				width:500px;
+				height:300px;
+				overflow:hidden;
+				position:relative;
+			}
+			.slide-con{
+				position:absolute;
+				left:0;
+				width:2000px;
+			}
+			.slide{
+				float:left;
+				width:500px;
+				height:300px;
+				text-align:center;
+				font-size:50px;
+				color:white;
+			}
+			.slide-con .slide:nth-child(1){
+				background:gold;
+			}
+			.slide-con .slide:nth-child(2){
+				background:red;
+			}
+			.slide-con .slide:nth-child(3){
+				background:green;
+			}
+			.slide-con .slide:nth-child(4){
+				background:gold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slide_show">
+			<div class="slide-con">
+				<div class="slide">1</div>
+				<div class="slide">2</div>
+				<div class="slide">3</div>
+				<div class="slide">4</div>
+			</div>
+		</div>
+		<script src="js/tween.js"></script>
+		<script>
+			var conDiv = document.getElementsByClassName("slide-con")[0];
+			
+			var t = 0;
+			var b = 0;	//滑动的初识距离
+			var c = -500;	//滑动时的该变量
+			var d = 50;		//总时长（控制速度）
+			
+			function play(){
+				t++;
+				conDiv.style.left = Tween.Quad.easeInOut(t,b,c,d) + "px";
+				//当前页轮播动画结束
+				if(t == d){		//当执行完50步
+					b = conDiv.offsetLeft;		//划过去的第一页的左上角-500
+					t = 0;		//再次循环
+				}
+				//实现循环播放，当最后一张播放完是，重置内容区left值 以及属性
+				if(b == -1500){
+					b = 0;	
+					conDiv.offsetLeft = 0 + "px";
+				}
+			}
+			
+			var timer = setInterval(play,30);
+			
+//			offsetLeft:获取当前元素左上角基于其定位父级元素的左边框的距离
+			
+			var showDiv = document.getElementsByClassName("slide_show")[0];
+			//鼠标移入时 暂停播放
+			showDiv.onmouseover = function(){
+				clearInterval(timer);
+			}
+			showDiv.onmouseout = function(){
+				timer = setInterval(play,30);
+			}
+		</script>
+	</body>
+</html>

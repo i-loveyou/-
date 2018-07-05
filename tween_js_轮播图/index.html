@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/tween.js"></script>
+		<style>
+			#dl{
+				position:absolute;
+				left:10px;
+				width:50px;
+				height:50px;
+				background:red;
+				opacity: 1;
+				border-radius:50%;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			tween.js是一款可生成平滑动画效果的js动画库
+			其中提供了很多缓动函数
+			
+			使用：
+			语法：tween。缓动函数缓动效果（t,b,c,d）;
+			四个参数含义：
+			t:(current time)	当前时间
+			b:(begining value)	属性的初始值
+			c:(change)	属性的改变量
+			d:时长（总时间）
+			返回值：返回当前这一步de属性值
+			
+			除Linear匀速函数外，其他函数都有三种状态
+		-->
+		
+		<div id="dl"></div>
+		
+		<script>
+			var dl = document.getElementById("dl");
+			function play(){
+			var t = 0;		//当前步数
+			var b = 10;		//初识属性值
+			var c = 490;	//变化量
+			var d = 20;		//总时间（20步）
+			
+			//打印出每一步的变化量
+//			console.log(Tween.Quad.easeIn(1,b,c,d));
+//			console.log(Tween.Quad.easeIn(2,b,c,d));
+//			console.log(Tween.Quad.easeIn(3,b,c,d));
+//			console.log(Tween.Quad.easeIn(4,b,c,d));
+//			console.log(Tween.Quad.easeIn(5,b,c,d));
+			
+			var timer = setInterval(function(){
+					t++;
+					if(t == 20){
+						//表示动画完成
+						clearInterval(timer);	//完成后清除计时器
+					}
+					dl.style.left = Tween.Back.easeIn(t,b,c,d)+"px";
+			},100)
+			}
+			play();
+			var t = 1;		
+			var b = 10;		
+			var c = 490;	
+			var d = 40;	
+			var a = setInterval(function(){
+				t -= 0.1;
+				if(t == 40)
+				{
+					clearInterval(a);
+				}
+				dl.style.opacity = Tween.Linear(t,b,c,d);
+			},100)
+		</script>
+	</body>
+</html>
