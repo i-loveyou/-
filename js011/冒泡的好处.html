@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				position:absolute;
+				left: -200px;
+				bottom: 300px;
+				width: 200px;
+				height: 100px;
+				background:green;
+				transition: all .5s;
+			}
+			#share{
+				position: absolute;
+				right: -20px;
+				top:50%;
+				margin-top: -25px;
+				background:green;
+				color:white;
+				width: 20px;
+				height: 50px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div id="share">分享</div>
+		</div>
+		
+		<script>
+			var btn = document.getElementById("share");
+			var box = document.querySelector(".box");
+			//利用冒泡将事件传递给父级处理
+			box.onmouseover = function(){
+				box.style.left = "0";
+			}
+			box.onmouseout = function(){
+				box.style.left = "-200px";
+			}
+		</script>
+	</body>
+</html>

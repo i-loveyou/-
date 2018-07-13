@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.news{
+				position:relative;
+				height: 100px;
+				border:1px solid;
+			}
+			#zan{
+				position: absolute;
+				right: 30px;
+				bottom: 30px;
+				width: 30px;
+				background:red;
+				text-align:center;
+				cursor:pointer;
+				color:white;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="news">
+			<p>小米上市了，点击了解详情</p>
+			<span id="zan">赞</span>
+		</div>
+		
+		<!--		
+			事件冒泡：事件传递的过程
+		-->
+		
+		
+		<script>
+			var div = document.querySelector(".news");
+			
+			var zan = document.querySelector("#zan");
+			//点击访问详情
+			div.onclick = function(){
+				alert("进入详情");
+			}
+			
+			/*如何取消冒泡：
+			 * 标准下：e.stopPropagation();
+			 * IE低版本:e.cancelBubble = true;
+			 */
+
+			//点赞			
+			zan.onclick = function(e){
+				alert("点赞");
+				
+				if(e.stopPropagation){
+					e.stopPropagation();
+				}else{
+					e.cancelBubble = true;
+				}
+			}
+		</script>
+	</body>
+</html>

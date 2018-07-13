@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#d1{
+				position: absolute;
+				left: 10px;
+				right: 10px;
+				width: 100px;
+				height: 100px;
+				background:red;
+			}
+			#d2{
+				margin: 200px auto;
+				width: 100px;
+				height: 100px;
+				background:blue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<div id="d1"></div>
+		<div id="d2"></div>
+		
+		
+		<script>
+			var d1 = document.getElementById("d1");
+			var d2 = document.getElementById("d2");
+			
+			d1.onmousedown = function(e){
+				var eve = window.event || e;
+				var x = eve.clientX - d1.offsetLeft;
+				var y = eve.clientY - d1.offsetTop;
+				
+				document.onmousemove = function(e){
+					var eve = window.event || e;
+					d1.style.left = eve.clientX - x + "px";
+					d1.style.top = eve.clientY - y + "px";
+					
+					//检测碰撞
+					//获取两物体上下左右的位置  进行对比
+					var l1 = d1.offsetLeft;
+					var r1 = d1.offsetLeft + d1.offsetWidth;
+					var t1 = d1.offsetTop;
+					var b1 = d1.offsetTop + d1.offsetHeight;
+					
+					var l2 = d2.offsetLeft;
+					var r2 = d2.offsetLeft + d2.offsetWidth;
+					var t2 = d2.offsetTop;
+					var b2 = d2.offsetTop + d2.offsetHeight;
+					
+					if(r1 < l2 || l1 > r2 || b1 < t2 || t1 > b2){
+						//没有相碰
+						d2.style.background = "blue";
+					}else{
+						//碰撞
+						d2.style.background = "black";
+					}
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+		</script>
+	</body>
+</html>

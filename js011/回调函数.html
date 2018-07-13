@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			/*在函数内部调用另一个函数
+			 * 
+			 */
+			// 参数cb：回调函数
+			//回调函数通常可以用于传值：将内部的数据传递给外部。传递的数据作为回调函数的参数形式
+			function fn(n,cb){
+				var a = n*n;
+				
+				cb(a);
+			}
+			
+			fn(3,function(val){
+				console.log(val);
+			});
+		</script>
+		
+	</body>
+</html>

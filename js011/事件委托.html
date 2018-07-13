@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.news{
+				padding:0;
+			}
+			.news li{
+				position:relative;
+				height: 60px;
+				background:whitesmoke;
+				border-bottom:1px solid grey;
+				padding: 20px;
+				margin: 5px 0;
+			}
+			.news a{
+				position:absolute;
+				right: 30px;
+				bottom: 20px;
+				text-decoration: none;
+				color:orange;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="news">
+			<li>新闻1<a href="javascript:;">评论</a></li>
+			<li>新闻2<a href="javascript:;">评论</a></li>
+			<li>新闻3<a href="javascript:;">评论</a></li>
+			<li>新闻4<a href="javascript:;">评论</a></li>
+			<li>新闻5<a href="javascript:;">评论</a></li>
+			<li>新闻6<a href="javascript:;">评论</a></li>
+			<li>新闻7<a href="javascript:;">评论</a></li>
+			<li>新闻8<a href="javascript:;">评论</a></li>
+			<li>新闻9<a href="javascript:;">评论</a></li>
+			<li>新闻10<a href="javascript:;">评论</a></li>
+		</ul>
+		
+		<script>
+			//事件委托/代理
+			//利用冒泡将事件交由父级代为处理
+			
+			var ul = document.querySelector(".news");
+			
+			ul.onclick = function(e){
+				var eve = window.event || e;
+				//先获取目标源对象
+				var tar = eve.target || eve.srcElement;
+				//nodeName	节点名称（若是元素节点，则得到的是对应标签名的大写形式）
+				if(tar.nodeName.toLowerCase() == "li"){
+					alert("进入详情页");
+				}else if(tar.nodeName.toLowerCase() == "a"){
+					alert("评论");
+					eve.preventDefault();
+					eve.return = false;
+				}
+			}
+		</script>
+	</body>
+</html>

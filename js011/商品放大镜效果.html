@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width: 1000px;
+				height: 1500px;
+				margin:0 auto;
+				background:lightgray;
+			}
+			.box{
+				width: 300px;
+				height: 300px;
+				border:1px solid whitesmoke;
+			}
+			.noraml{
+				width: 300px;
+				height: 300px;
+				position:relative;
+			}
+			#zoom{
+				position:absolute;
+				left: 0;
+				top: 0;
+				width: 100px;
+				height: 100px;
+				background:url(img/bg.png);
+				cursor: move;
+				display: none;
+			}
+			.big{
+				width: 300px;
+				height: 300px;
+				position:absolute;
+				left:350px;
+				top: 8px;
+				overflow: hidden;
+				display:none;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="wrap">
+			<div class="box">
+				<!--左侧正常图区域-->
+				<div class="noraml">
+					<img src="img/small.jpg" alt="" />
+					<div id="zoom"></div>
+				</div>
+				<!--右侧放大图区域-->
+				<div class="big">
+					<img src="img/big.jpg" alt="" />
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			var normalDiv = document.querySelector(".noraml");
+			var zoomDiv = document.getElementById("zoom");
+			var bigDiv = document.querySelector(".big");
+			var bigImg = bigDiv.firstElementChild;
+			
+			normalDiv.onmouseover = function(){
+				//出现放大镜方块
+				zoomDiv.style.display = "block";
+				bigDiv.style.display = "block";
+				
+				//方块跟随移动
+				normalDiv.onmousemove = function(e){
+					var eve = window.event || e;
+					
+					var x = eve.clientX - normalDiv.parentElement.offsetLeft - zoomDiv.offsetWidth/2;
+					var y = eve.clientY - normalDiv.parentElement.offsetTop - zoomDiv.offsetHeight/2;
+					
+					var maxL = normalDiv.clientWidth - zoomDiv.offsetWidth;
+					var maxT = normalDiv.clientHeight - zoomDiv.offsetHeight;
+					if(x < 0) x = 0;
+					if(x > maxL) x = maxL;
+					if(y < 0) y = 0;
+					if(y > maxT) y = maxT;
+					
+					
+					zoomDiv.style.left = x + "px";
+					zoomDiv.style.top = y + "px";
+					
+					//右侧图显示方块对应区域的放大图
+					//比例 ：方块当前移动距离占最大可移动距离的比例 === 右侧大图移动的距离占其最大可移动距离
+					//方式一：使用滚动偏移
+//					bigDiv.scrollLeft =  x / maxL * (bigDiv.scrollWidth - bigDiv.offsetWidth);	//滚动条的是总距离-显示的框的宽度，剩下的就是可移动的最大距离
+//					bigDiv.scrollTop = y / maxT * (bigDiv.scrollHeight - bigDiv.offsetHeight);
+					
+					bigImg.style.position = "absolute";
+					//大图片的总的宽度相当于上面的滑动条的总距离 - 显示的框的总距离，剩下的是可移动的最大的距离
+					//负号是向边框到里面图的偏移的移动
+					bigImg.style.left = -x / maxL*(bigImg.offsetWidth - bigDiv.offsetWidth) + "px";		
+					bigImg.style.top = -y / maxT*(bigImg.offsetHeight - bigDiv.offsetHeight) + "px";
+				}
+			}
+			
+			normalDiv.onmouseout = function(){
+				zoomDiv.style.display = "none";
+				bigDiv.style.display = "none";
+			}
+
+
+		</script>
+	</body>
+</html>

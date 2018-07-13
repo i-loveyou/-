@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 400px;
+				border:1px solid red;
+			}	
+			.wrap{
+				position: relative;
+				width: 400px;
+				height: 600px;
+				border:1px solid;
+			}
+			#loading{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: lightcyan;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			.bar{
+				width: 300px;
+				height: 20px;
+				border:2px solid green;
+			}
+			.progress{
+				height: 20px;
+				width: 0;
+				background:orange;
+			}
+			.game{
+				width: 100%;
+				height: 100%;
+				background:black;
+			}
+		</style>
+	</head>
+	<body>
+		<!--预加载：提前加载
+		使用场景：常用于游戏、瀑布流
+		图片预加载：有很多的图片时，若一起加载，用户需要等待的时间较长，使用体验度不好，所以可以将项目中需要的资源提前加载好，在需要显示的时候直接显示-->
+		<div class="box"></div>
+		<hr />
+		
+		<div class="wrap">
+			<!--游戏-->
+			<div id="loading">
+				<div class="bar">
+					<div class="progress"></div>
+				</div>
+				<p>正在加载中<span id="val"></span>%</p>
+			</div>
+			<!--游戏主界面-->
+			<div class="game">
+				
+			</div>
+		</div>
+		
+		<script>
+			var box = document.querySelector(".box");
+			var  img = new Image();
+			
+			img.onload = function(){
+				//img.width/img.height == 400/?
+				var h = 400*img.height/img.width;
+				box.style.height = h + "px";
+				img.width = 400;	//直接width不加px，style.width加px；
+				box.appendChild(img);
+			}
+			img.src = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531367562636&di=10e1276de6b6ab5bfc3e008a6dfb6a80&imgtype=0&src=http%3A%2F%2Fc.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F09fa513d269759eeef490028befb43166d22df3c.jpg";
+		</script>
+		<script>
+			//1.将需要预加载的图片的路径提前存储在数组中
+			var imgs = ["https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=5de322fd21f5e0fef1188f016c6234e5/d788d43f8794a4c2d0e2cacf02f41bd5ac6e3914.jpg","https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=ab5f5c295d3d269731d30e5d65fab24f/64380cd7912397ddaaf7f9e75582b2b7d1a28742.jpg","https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=2bd2522006d162d99aee641c21dda950/b7003af33a87e9501cf0ef881c385343faf2b46a.jpg","https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3962030181,329894226&fm=27&gp=0.jpg"];
+			//2.定义函数实现预加载效果
+			/*
+			 * arr  存储所有图片地址的数组
+			 * progress		回调函数    加载的百分比传递给外界使用
+			 * complete		回调函数    所有图片加载完毕后的处理函数
+			 */
+			function preloadImg(arr,progress,complete){
+				var imgObjs = [];//存储所有加载好的图片对象
+				var count = 0;//记录已加载的图片的数量
+				
+				for (var i = 0; i < arr.length; i++) {
+					var img = new Image();
+					imgObjs.push(img);
+					img.onload = function(){
+						count++;
+						//百分比
+						var per = Math.floor(count/arr.length*100);
+						typeof progress === "function" && progress(per);
+						if(count == arr.length){
+							//代表图片已全部加载完毕
+							typeof complete === "function" && complete(imgObjs);
+						}
+					}
+					img.src = arr[i];
+				}
+			}
+			
+			preloadImg(imgs,function(val){
+				document.querySelector(".progress").style.width = val + "%";
+				document.getElementById("val").innerHTML = val;
+			},function(allImg){
+				console.log(allImg);
+				document.getElementById("loading").style.display = "none";
+			});
+		</script>
+	</body>
+</html>

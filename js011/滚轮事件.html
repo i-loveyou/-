@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#d1{
+				width: 200px;
+				height: 200px;
+				background:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<script>
+			/*滚轮事件：
+			 * FF下：DOMMouseScroll
+			 * 只能通过addEventListener  添加该事件
+			 * detail  属性来获取滚动方向
+			 * >0表示向下滚动
+			 * <0表示向上滚动
+			 * 
+			 * 非FF下：mousewheel
+			 * 		wheelDelta  属性来获取滚动方向
+			 * 		>0 表示向上滚动
+			 * 		<0 表示向下滚动
+			 */
+			
+			document.addEventListener("DOMMouseScroll",fn,false);
+			function fn(e){
+				if(e.detail > 0){
+					console.log("下");
+				}else{
+					console.log("上");
+				}
+			}
+			
+			//非FF下
+			document.onmousewheel = function(){
+				if(event.wheelDelta > 0){
+					console.log("上");
+				}else{
+					console.log("下");
+				}
+			}
+			
+			//封装一个兼容的添加滚轮事件的方法
+			/*obj	添加滚轮事件的DOM节点对象
+			 * up	回调函数  处理上滚的操作
+			 * down	回调函数  处理下滚的操作
+			 * 
+			 */
+			function mouseWheel(obj,up,down){
+				//浏览器嗅探
+				if(navigator.userAgent.indexOf("Firefox") > -1){
+					obj.addEventListener("DOMMouseScorll",scroll,false);
+				}else{
+					try{
+						obj.addEventListener("mousewheel",scroll,false);
+					}catch(e){
+						obj.onmousewheel = scroll;
+					}
+				}
+				
+							
+				function scroll(e){
+					var eve = window.event || e;
+					//存储滚动方向	默认向下
+					var dir = false;
+					if(eve.detail){
+						dir = eve.detail > 0 ? false : true;
+					}else{
+						//非火狐
+						dir = eve.wheelDelta > 0 ? true : false;
+					}
+					if(dir){
+						typeof up === "function" && up();	//回调函数(函数作参数)
+					}else{
+						typeof down === "function" && down();
+					}
+				}
+			}
+			
+			var div = document.getElementById("d1");
+			
+			mouseWheel(div,function(){
+				div.style.width = div.offsetWidth + 10 + "px";
+				div.style.height = div.offsetHeight +10 + "px";
+			},function(){
+				div.style.width = div.offsetWidth - 10 + "px";
+				div.style.height = div.offsetHeight -10 + "px";
+			});
+		</script>
+		
+	</body>
+</html>

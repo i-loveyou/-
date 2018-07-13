@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		1.事件绑定的方式：
+			a.行间添加事件属性
+			b.js中添加事件属性   on+事件名
+			c.addEventListener（"事件名"，事件处理函数，是否捕获）		标准方法
+			ie低版本		attachEvent()
+			
+		1.1取消绑定:
+		a. on+事件名 = null
+		b. addEventListener方式使用removeEventListener
+		ie低版本		attachEvent   使用detachEvent
+		
+		2.事件对象
+		2.1 event：
+		2.2 事件对象常用的属性：
+		clientX、clientY
+		screenX、screenY
+		pageX、pageY 	ie下不支持
+		
+		目标源对象：target || srcElement
+		
+		keyCode 	键码值
+		key 	按键内容
+		altKey / ctrlKey / shiftKey
+		
+		3.事件类型
+		鼠标事件：click   dblclick  contextmenu
+				 mouseover / mouseout
+				 mouseenter / mouseleave
+				 mousedown mouseup mousemove
+		键盘事件：keydown  keyup  keypress
+		表单事件：focus  blur  change  input  submit
+		其他事件：load   scroll   resize(当前尺寸发生变化时)
+		
+		4.事件流
+		捕获阶段 -- 处于目标阶段 -- 冒泡阶段
+		
+		5.阻止默认行为
+		标准：event.preventDefault()
+		IE:event.returnValue = false;   或  return  false;
+		<script>
+			window.onload = function(){
+				alert("当页面所有资源都加载完毕");
+			};
+			
+			//当窗口尺寸发生变化时
+			window.onresize = function(){
+				console.log(document.body.clientHeight,document.body.clientWidth);
+			}
+		</script>
+	</body>
+</html>
