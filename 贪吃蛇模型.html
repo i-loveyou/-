@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#wrap {
+				position: relative;
+				width: 600px;
+				height: 500px;
+				border: 1px solid black;
+				margin: 0 auto;
+			}
+			
+			#snake {
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				background-color: red;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="snake"></div>
+		</div>
+
+		<script>
+			// 获取标签
+			var wrapDiv = document.getElementById("wrap");
+			var snakeDiv = document.getElementById("snake");
+
+			//生成随机数
+			function GetRand(min, max) {
+				return parseInt(Math.random() * (max - min + 1) + min);
+			}
+
+			//X轴移动最大范围
+			var maxLeft = wrap.clientWidth - snakeDiv.offsetWidth;
+
+			//Y轴移动最大范围
+			var maxTop = wrap.clientHeight - snakeDiv.offsetHeight;
+
+			//设置随机初始位置
+			snakeDiv.style.left = GetRand(5, maxLeft - 5) + "px";
+			snakeDiv.style.top = GetRand(5, maxTop - 5) + "px";
+
+			//设置移动速度和方向
+			var speed = 2;
+			var direction = "right";
+
+			//设置初始移动方向
+			var timer = setInterval(function() {
+				// 记录当前div的left和top值
+				var l = snakeDiv.offsetLeft;
+				var t = snakeDiv.offsetTop;
+
+				//碰壁判断
+				if(l >= maxLeft || l <= 0 || t >= maxTop || t <= 0) {
+					clearInterval(timer);
+					alert("Game Over");
+				} else{
+				//判断方向, 进行运动
+					switch (direction){
+						case "up":
+							snakeDiv.style.top = t - speed + "px";
+						break;
+						case "down":
+							snakeDiv.style.top = t + speed + "px";
+						break;
+						case "left":
+							snakeDiv.style.left = l - speed + "px";
+						break;
+						case "right":
+							snakeDiv.style.left = l + speed + "px";
+						break;
+						default:
+					}
+				}
+
+			}, 30);
+
+			// 给document绑定键盘事件
+			document.onkeydown = function(ev) {
+				var eventObj = ev || window.event;
+						// 判断keyCode, 从而知道用户按下的是哪个方向键, 然后用direction保存
+						switch(ev.keyCode) {
+							case 37: //左
+								direction = "left";
+								break;
+							case 38: //上
+								direction = "up";
+								break;
+							case 39: //右
+								direction = "right";
+								break;
+							case 40: //下
+								direction = "down";
+								break;
+							default:
+						}
+			}
+		</script>
+	</body>
+
+</html>
