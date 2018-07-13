@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.slide-wrap{
+				position: relative;
+				width: 600px;
+				height: 600px;
+			}
+			.slide-show{
+				height: 600px;
+				position: relative;
+				overflow: hidden;
+			}
+			.slide-item{
+				position: absolute;
+				top: 0;
+				width: 600px;
+				height: 600px;
+				opacity: 0;
+				transition: opacity 0.5s; 
+			}
+			.slide-active{
+				opacity: 1;
+			}
+			.slide-item img{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slide-wrap">
+			
+			<div class="slide-show">
+				<div class="slide-item slide-active"><a href=""><img src="img/1.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/2.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/3.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/4.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/5.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/6.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/7.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/8.jpg" alt="" /></a></div>
+			</div>
+			
+		</div>
+		
+		<script>
+			var items = document.querySelectorAll(".slide-item");
+			
+			setInterval(autoplay,3000);
+			
+			var index = 0;
+			function autoplay(){
+//				items[index].className = "slide-active";
+				items[index].style.opacity = 0;
+				index++;
+				if(index == 8){
+					index = 0;
+				}
+				items[index].style.opacity = 1;
+			}
+		</script>
+	</body>
+</html>
