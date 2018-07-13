@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			/*键盘事件的类型名：
+			 * keydown		按下按键
+			 * 若长按不松手，该事件会连续触发
+			 * 
+			 * keyup		抬起按键时
+			 * 
+			 * keypress		按下按键
+			 * 部分按键不识别，只能识别输入型按键，不能识别功能型按键
+			 */
+			
+			document.onkeydown = function(e){
+				var eve = event || e;
+				console.log(eve);
+				/* 常用的键盘事件对象的属性*/
+				//keyCode		建码值	常用来区分识别按键
+				console.log(eve.keyCode);
+				//key    按键内容
+				console.log(eve.key);
+				//ctrlKey		是否按下了ctrl键(布尔值)
+				console.log(eve.ctrlKey);
+				//altKey		是否按下alt键
+				//shiftKey		是否按下shift
+			}
+			
+			document.onkeyup = function(){
+				console.log("up");
+			}
+			
+			document.onkeypress = function(){
+				console.log("press");
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{padding:0;margin:0;}
+			#d1{
+				width: 100px;
+				height: 100px;
+				background:blue;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		
+		<script>
+			var div = document.getElementById("d1");
+			
+			
+			div.onmousedown = function(e){
+				var eve =event || e;
+				//获取当前鼠标点基于当前元素左上点的位置
+				var x = eve.clientX - div.offsetLeft;
+				var y = eve.clientY - div.offsetTop;
+//				if(eve.clientX-x>0){}
+				document.onmousemove = function(e){
+					var eve =event || e;
+					div.style.left = eve.clientX-x +"px";
+					div.style.top = eve.clientY-y  +"px";
+				}
+				//抬起时  移除移动事件
+				div.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+		</script>
+	</body>
+</html>
+

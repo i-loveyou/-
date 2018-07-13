@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#d1{
+				width: 150px;
+				height: 50px;
+				border:1px solid;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!--方式1：在html中添加事件属性-->
+		<button onclick="alert('hello');">点击</button>
+		
+		<!--建议应该避免使用该方式，原因：会使标签数量变大，可读性很差-->
+		
+		<!--方式2：在街上、中添加事件属性-->		
+		<!--a.  on+事件名-->
+		<button id="btn">点击</button>
+		
+		<div id="d1">哈哈哈</div>
+		
+		<script>
+			var btn = document.getElementById("btn");
+			
+//			btn.onclick = function(){
+//				alert("hello!");
+//			}
+			btn.onclick = fn;	//不加小括号,包括行间样式
+			/*该方式绑定事件时
+			 * 同一种事件的类型同时只能添加一个事件处理函数
+			 * 若添加多个的话，后面的会覆盖前面的
+			 * 
+			 * 如何取消绑定？
+			 * 将对应的时间属性置为null.   on+事件名 = null；
+			 */
+			btn.onclick = null;
+			function fn(){
+				document.body.style.background = "gold";
+			}
+			
+			var div = document.getElementById("d1");
+			//方式3:添加事件监听	
+			/*addEventListener("事件名","事件处理函数",是否捕获)
+			 * 参数1：事件名
+			 * 参数2：事件处理函数   可以是匿名函数
+			 * 参数3：是否捕获    默认false不捕获
+			 * 
+			 */
+//			IE低版本（6-8）并不支持该方法.而是使用attachEvent("on+事件名","事件处理函数")
+			div.addEventListener("click",handle,false);
+			div.addEventListener("click",fn);
+			div.addEventListener("click",function(){
+				
+			});
+			
+			div.addEventListener("mouseover",function(){
+				div.style.color = "green";
+			})
+			/*该方式绑定事件时：
+			 * 可以给同一种类型的时间同时关联多个事件处理函数
+			 * 按绑定的顺序执行不同的事件处理函数
+			 * 
+			 * 如何取消绑定？
+			 * 使用removeEventListener("事件名","事件处理函数",是否捕获)
+			 * 注意：IE低版本（6-8）并不支持该方法，而是使用detachEvent("事件名"，事件处理函数)移出事件
+			 * 注意：若关联的是匿名函数，则该事件的这个事件函数将无法移出
+			 */
+			div.removeEventListener("click",fn);
+			function handle(){
+				div.style.color = "red";
+			}
+			
+			/*
+			 * 封装一个兼容的绑定事件的方法
+			 */
+			function bindEvent(ele,type,handle){		//（绑定函数，事件名，函数方法）
+				try{
+					//for 标准浏览器以及IE9+
+					ele.addEventListener(type,handle,false);
+				} catch(e){
+					try{
+						//IE8以及以下
+						ele.attachEvent("on"+type,handle);
+					}catch(e){
+						//TODO handle the exception
+						ele["on"+type] = handle;
+						//ele.onclick()		点语法后只能跟属性，所以用[]，和点一样
+					}
+				}
+			}
+			
+			bindEvent(div,"mouseout",test);
+			function test(){
+				div.style.color = "red";
+			}
+		</script>
+	</body>
+</html>

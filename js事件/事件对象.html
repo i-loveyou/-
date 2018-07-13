@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{padding:0;margin:0;}
+			#d1{
+				width: 200px;
+				height: 100px;
+				background:red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--事件对象：
+		当事件触发时，系统会自动创建一个对象event,对应事件所有相关的信息都会被记录并且存储在这个对象中-->
+		<div id="d1"></div>
+		
+		<script>
+			var div = document.getElementById("d1");
+			
+			div.onclick = function(e){
+				//除FF浏览器以外，可以直接使用event对象；在FF下不支持该对象，为了兼容FF，需要给当前函数添加一个参数，该参数就表示事件对象
+				//console.log(event);
+				//console.log(e);
+				var eve = window.event || e;
+				console.log(eve);
+				
+				/*常用的几个事件对象属性
+				 * 
+				 */
+				//事件源（触发当前时间的元素节点）对象
+				//标准下：eve.target    IE，chrome：eve.srcElement
+				console.log(eve.target,eve.srcElement);
+				
+				/*获取当前点在窗口可视区域左上角的位置坐标
+				 * clientX
+				 * clientY
+				 */
+				console.log(eve.clientX,eve.clientY);
+				/*获取鼠标当前点相对于显示器左上角的位置坐标
+				 * screenX
+				 * screenY
+				 */
+				console.log(eve.screenX,eve.screenY);
+				
+				//事件类型名称  type
+				console.log(eve.type);
+				/*获取鼠标按键
+				 * button
+				 * 左键  中键  右键  分别有一个数字表示
+				 * 
+				 */
+				console.log(eve.button);
+			}
+		</script>
+	</body>
+</html>

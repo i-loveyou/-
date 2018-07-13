@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#d1{
+				width: 100px;
+				height: 50px;
+				border:1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		
+		<script>
+			//鼠标事件
+			/*click:鼠标左键单击
+			 * dblclick  双击
+			 * contextMenu	右键单击
+			 * 
+			 * mouseover	移入		支持冒泡
+			 * mouseout		移出		支持冒泡
+			 * 
+			 * mouseenter	移入		不支持事件冒泡
+			 * mouseleave	移出		不支持事件冒泡
+			 * 
+			 * mousedown	鼠标按下
+			 * mouseup		鼠标抬起
+			 * 
+			 * mousemove	移动
+			 */
+			
+			var d1 = document.getElementById("d1");
+			d1.onclick = function(){
+				console.log("点击了");
+			}
+			d1.ondblclick = function(){
+				console.log("双击");
+			}
+			
+			//右击事件有默认行为，自动出现浏览器菜单项
+			d1.oncontextmenu = function(){
+				console.log("右击");
+				//取消默认行为
+				return false;
+			}
+//			window.oncontextmenu = function(){
+//				return false;
+//			}
+			
+			/*执行先后顺序
+			 * mousedown mouseup click
+			 */
+			/*mousedown:
+			 * 
+			 */
+			d1.onmousedown = function(){
+				console.log("按下时");
+			}
+			d1.onmouseup = function(){
+				console.log("抬起时");
+			}
+			d1.onmousemove = function(){
+				console.log("移动时");
+			}
+		</script>
+	</body>
+</html>

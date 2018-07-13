@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{margin:0;background:black;}
+			html,body{
+				height: 100%;
+			}
+			#tank{
+				height: 30px;
+				position:absolute;
+				bottom:100px;
+				left:60%;
+				width: 30px;
+				background:url(img/p1tanku.gif) no-repeat;
+				background-size:cover;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tank"></div>
+		
+		<script>
+			var tank = document.getElementById("tank");
+			
+			document.onkeydown = function(e){
+				var eve = event || e;
+				
+				switch (eve.keyCode){
+					case 37:
+						tank.style.backgroundImage = "url(img/p1tankL.gif)";
+						tank.style.left = tank.offsetLeft-10 + "px";
+						break;
+					case 38:
+						tank.style.backgroundImage = "url(img/p1tankU.gif)";
+						tank.style.top = tank.offsetTop-10 + "px";
+						break;
+					case 39:
+						tank.style.backgroundImage = "url(img/p1tankR.gif)";
+						tank.style.left = tank.offsetLeft+10 + "px";
+						break;
+					case 40:
+						tank.style.backgroundImage = "url(img/p1tankD.gif)";
+						tank.style.top = tank.offsetTop+10 + "px";
+						break;
+					default:
+						break;
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{padding:0;margin:0;}
+			#d1{
+				width: 100px;
+				height: 100px;
+				background:blue;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		
+		<script>
+			var div = document.getElementById("d1");
+			
+			
+			document.onmousemove = function(e){
+				var eve =event || e;
+				
+				div.style.left = eve.clientX +"px";
+				div.style.top = eve.clientY  +"px";
+			}
+			
+		</script>
+	</body>
+</html>

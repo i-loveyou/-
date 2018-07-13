@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			
+			/*一些事件默认都自带默认的行为，比如a链接，表单提交，鼠标右击等
+			有些场景下需要取消对应默认行为
+			
+			如何取消或阻止事件的默认行为？
+			
+			标准下：event.preventDefault()
+			IE低版本（ie9-）：event.returnValue = false  或在事件处理函数中return false;
+			*/
+			document.oncontextmenu = function(e){
+				var eve = window.event || e;
+				
+//				eve.preventDefault();
+//				eve.returnValue = false;
+				return false;
+			}
+		</script>
+		
+	</body>
+</html>

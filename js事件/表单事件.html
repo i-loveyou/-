@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form id="form1" action="index.html" method="get">
+			姓名：<input id="user" type="text" name="user"/><br />
+			昵称：<input id="nick" type="text" /><br />
+			国籍：<select name="country" id="sel"><br />
+				<option value="china">China</option>
+				<option value="russia">Russia</option>
+				<option value="uk">UK</option>
+			</select><br />
+			<input type="submit" value="提交"/>
+		</form>
+		
+		<script>
+			/*表单事件类型名：
+			 * focus	获取焦点
+			 * blur		失去焦点
+			 * change	内容发生变化时
+			 * input	内容发生变化时
+			 * submit	提交时
+			 * select	选中文本内容时
+			 */
+			
+			var nameInput = document.getElementById("user");
+			var nickInput = document.getElementById("nick");
+			
+			//当获取焦点时
+			nameInput.onfocus = function(){
+				console.log("focus");
+				nameInput.style.border = "1px solid red";
+			}
+			nameInput.onblur = function(){
+				console.log("blur");
+				nameInput.style.border = "1px solid gray";
+			}
+			
+			//当内容发生变化时	在元素失去焦点时触发
+			nameInput.onchange = function(){
+				console.log(this.value);
+			}
+			document.getElementById("sel").onchange = function(){
+				console.log(this.value);
+			}
+			//当内容发生变化时	内容改变就触发	IE低版本不支持
+			nameInput.oninput = function(){
+				console.log(this.value);
+			}
+			
+			//当表单提交时
+			var f = document.getElementById("form1");
+			f.onsubmit = function(){
+				if(nameInput.value.length == 0 || nickInput.value.length ==0){
+					//取消默认行为
+					return false;
+				}
+			}
+			
+			//当选中文本内容时
+			nameInput.onselect = function(){
+				console.log("选中了");
+			}
+		</script>
+	</body>
+</html>
