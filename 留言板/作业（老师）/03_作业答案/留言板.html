@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<style>
+		#div1{
+			width: 506px;
+			margin: 0 auto;
+			border: 5px solid black;
+			position: relative;
+			padding: 40px;
+		}
+
+		#txt{
+			width: 500px;
+			height: 200px;
+		}
+		.txtChild{
+			width: 500px;
+			height: 100px;
+			background-color: #D7D8DA;
+			position: relative;
+			/*top: -250px;*/
+			border-radius: 10px;
+			margin-top: 20px;
+		}
+		#enter{
+			width: 50px;
+			height: 25px;
+			color: white;
+			border: 1px solid #ccc;
+			text-align: center;
+			line-height: 25px;
+			background-color: darkorange;
+			margin-bottom: 20px;
+			/*opacity: 0.5;输入框没字就半透明*/
+		}
+
+
+		.close{
+			position: absolute;
+			right: 5px;
+			top: 5px;
+			border: none;
+			background-color: #D7D8DA;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<textarea id="txt" name="" rows="" cols=""> </textarea>
+		<div id="enter">发布</div>
+	</div>
+
+</body>
+
+	<script type="text/javascript">
+		/*留言板*/
+
+
+        var div1 = document.getElementById("div1");//父级div
+        var textArea = document.getElementById("txt");//输入框
+        var btn = document.getElementById("enter");//发布按钮
+
+
+		// 定时器
+		var timer = null;
+		// 判断提交按钮是否可以点击
+		var isClick = false;
+
+		// 初始化样式
+		resetStyle();
+		function resetStyle(){
+			textArea.value = "";
+			btn.style.opacity = "0.5";
+			isClick = false;
+		}
+
+		// 监听键盘抬起时，判断文本框里是否有值
+		// 如果有可以点击提交按钮，如果没有不可以点击提交按钮
+		document.onkeyup = function(){
+			if(textArea.value.length > 0 ){
+				btn.style.opacity = "1";
+				isClick = true;
+			}else{
+				btn.style.opacity = "0.5";
+				isClick = false;
+			}
+		}
+
+		// 提交按钮
+		btn.onclick = function(){
+			if(isClick){
+				// 创建元素
+				createEle();
+				// 提交成功初始化样式
+				resetStyle();
+			}
+		}
+		function createEle(){
+			// 创建留言和关闭按钮元素
+			var divs = document.createElement("div");
+			var xs = document.createElement("span");
+			// 设置class为了写样式
+			divs.setAttribute("class","txtChild");
+			xs.setAttribute("class","close");
+			// 设置留言内容为文本框的内容
+			divs.innerHTML = textArea.value;
+			// 设置关闭按钮的内容为x
+			xs.innerHTML = "x";
+			// 给关闭按钮设置点击事件，删除整个留言
+			xs.onclick = function(){
+				div1.removeChild(divs);
+			}
+			// 把关闭插入留言框
+			divs.appendChild(xs);
+			// 把留言框插入留言区域
+			div1.appendChild(divs);
+
+		}
+
+
+	</script>
+
+
+</html>

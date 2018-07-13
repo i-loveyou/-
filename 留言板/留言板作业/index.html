@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<style>
+		.box{
+			width:500px;
+			min-height:400px;
+			margin:50px auto;
+			border:3px solid;
+		}
+		.box textarea{
+			width:450px;
+			height:200px;
+			border:1px solid;
+			margin:20px 25px;
+			 resize: none;
+		}
+		.btn{
+			background:rgba(0,0,0,.5);
+			border:0;
+			margin-left:25px;
+			/*color:white;*/
+		}
+		.box div{
+			position:relative;
+		}
+		p{
+			margin-left:25px;
+			width:450px;
+			height:50px;
+			background:gray;
+			color:white;
+			border-radius:10px;
+		}
+		i{
+			display:inline-block;
+			position:absolute;
+			right:40px;
+			top:3px;
+			color:white;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box">
+		<textarea name="" id="text" cols="30" rows="10"></textarea>
+		<button class="btn" id="btn">发布</button>
+	</div>
+
+	<script>
+		var text = document.getElementById('text');
+		var btn = document.getElementById("btn");
+		var box = document.getElementById("box");
+		
+		btn.disabled = true;
+		text.onkeyup = function(){
+			var txt = text.value;
+			if(txt == ""){
+				btn.style.color = "black";
+				btn.disabled = true;
+			}else{
+				btn.style.cursor = "pointer";
+				btn.style.color = "white";
+				btn.disabled = false;
+			}
+		}
+		btn.onclick = function(){
+			var txt = text.value;
+
+			var frag = document.createDocumentFragment();
+			var wrap = document.createElement("div");
+			var p = document.createElement("p");
+			var txxt = document.createTextNode(txt);
+			p.appendChild(txxt);
+			// box.appendChild(p);
+			var i = document.createElement("i");
+			i.innerHTML = "x";
+
+			i.onclick = function(){
+				box.removeChild(wrap);
+			}
+			frag.appendChild(p);
+			frag.appendChild(i);
+			wrap.appendChild(frag);
+			box.appendChild(wrap);
+		}
+	</script>
+</body>
+</html>
