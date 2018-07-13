@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width:900px;
+				margin:0 auto;
+			}
+			.part{
+				height:400px;
+				border:1px solid;
+				margin-bottom:30px;
+			}
+			.part>img{
+				width:100%;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="wrap">
+			<div class="part"><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1499538610,2515113318&fm=27&gp=0.jpg" alt="" /></div>
+			<div class="part"><img data-src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3490317191,598853670&fm=27&gp=0.jpg" alt="" /></div>
+			<div class="part"><img data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530940736934&di=bdc5801db6e703c21d0e7f74aa197399&imgtype=0&src=http%3A%2F%2Fu.thsi.cn%2Ffileupload%2Fdata%2FInput%2F2012%2F12%2F26%2F57eab99193f1e02fc1357de45305e0e1.jpg" alt="" /></div>
+			<div class="part"><img data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3532337264,4277368964&fm=27&gp=0.jpg" alt="" /></div>
+			<div class="part"><img data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531535584&di=d770fd174b6e14e6913836842f1538bf&imgtype=jpg&er=1&src=http%3A%2F%2Fh.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D9c2792d6851001e94e691c0b8d3e57da%2F279759ee3d6d55fb8d10ad1965224f4a20a4dd3f.jpg" alt="" /></div>
+			<div class="part"><img data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=815964282,465691081&fm=27&gp=0.jpg" alt="" /></div>
+			<div class="part"><img data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2987549227,3263963493&fm=27&gp=0.jpg" alt="" /></div>
+			<div class="part"><img data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3622930461,2508564955&fm=27&gp=0.jpg" alt="" /></div>
+		</div>
+		
+		<!--
+		懒加载：延迟加载
+		图片的懒加载：用户想要浏览图片时，才去加载图片。
+		好处：页面加载速度快，可以减轻服务器的压力，节约流量，用户体验好。
+		
+		做法：
+		1.不要直接将图片地址赋值给图片的src，而是存储到自定义属性中，如data-src
+		2.页面加载后，根据scrollTop属性判断图片是否已经进入到用户的视野内，如果在可视区域内，再把自定义属性data-src中存储的真实的图片地址赋值给图片的src属性中
+		3.在滚动事件中重复的判断图片是否已进入可视区域内，一旦进入，就把自定义属性data-src中存储的真实的图片地址赋值给图片的src属性中
+		-->
+		
+		<script>
+			//伴随页面滚动时
+			window.onscroll = function(){
+				//获取滚动条滚动高度
+				var h1 = document.body.scrollTop || document.documentElement.scrollTop;
+				//获取窗口的可视范围高度
+				/*window.innerHeight	标准浏览器和IE9+
+				 * document.documentElement.clientHeight	IE低版本
+				 * document.body.clientHeight	IE低版本
+				 */
+				var vh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+				var parts = document.querySelectorAll(".part");
+				for(var i=0;i<parts.length;i++){
+					//获取图片
+					var img = parts[i].firstElementChild;
+					//当图片即将进入窗口可视区域时
+					if(img.getAttribute("data-src") && parts[i].offsetTop <= h1+vh){
+						img.src = img.getAttribute("data-src");
+						img.removeAttribute("data-src");
+					}
+				}
+			}
+		</script>
+		
+	</body>
+</html>

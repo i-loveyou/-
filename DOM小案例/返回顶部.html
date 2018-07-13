@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin:0;padding:0;}
+			.content{
+				height:3000px;
+				background:lightsalmon;
+				}
+			#toTop{
+				position:fixed;
+				right:20px;
+				bottom:50px;
+				width:40px;
+				height:40px;
+				background:#000;
+				line-height:40px;
+				text-align: center;
+				color:#fff;
+				cursor: pointer;
+				display:none;
+			}
+			#toTop:hover{
+				background:rgba(0,0,0,0.8);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">内容</div>
+		<div id="toTop">daw</div>
+		
+		<script>
+			/*带滚动的垂直滚动距离scrollTop
+			 * 
+			 * Safari document.body.scrollTop
+			 * 谷歌 火狐  其他非weibkit内核的  document.documentElement.scrollTop
+			 * 
+			 * 考虑到浏览器兼容
+			 * document.body.scrollTop || document.documentElement.scrollTop
+			 */
+			var btnTop = document.getElementById("toTop");
+			//当页面发生滚动时
+			window.onscroll = function(){
+				//获取垂直滚动条的滚动距离
+				var t = document.body.scrollTop || document.documentElement.scrollTop;
+				console.log(t);
+				//当页面滚动到一定距离时  出现置顶按钮
+				if(t > 200){
+					btnTop.style.display = "block";
+				}else{
+					btnTop.style.display = "none";
+				}
+				
+				//点击回到顶部
+				var timer = null;
+				btnTop.onclick = function(){
+//					document.body.scrollTop = document.documentElement.scrollTop = 0;
+					var st = document.body.scrollTop || document.documentElement.scrollTop;
+					clearInterval(timer);
+					timer = setInterval(function(){
+						st -= 20;
+						if(st <= 0){
+							clearInterval(timer);
+						}
+						document.body.scrollTop = document.documentElement.scrollTop = st;
+					},30)
+				}
+			}
+		</script>
+	</body>
+</html>

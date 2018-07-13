@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width: 1100px;
+				margin:0 auto;
+				overflow: hidden;
+			}
+			.col{
+				float:left;
+				width: 200px;
+				margin:0 10px;
+			}
+			.col>div{
+				margin:5px 0;
+				text-align: center;
+				color:white;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!--
+			瀑布流：多列  每列内容宽度一致，高度不一致，呈现层次不齐的排版布局效果
+			原理，查找当前所有列中列高度最矮的那一列，放下一个新的内容
+		-->
+		<div class="wrap">
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		
+		<script>
+			var cols = document.querySelectorAll(".col");
+			
+			for(var i =0;i<101;i++){
+				createItem(i);
+			}
+			
+			
+			function createItem(n){
+				var item = document.createElement("div");
+				//随机高度
+				item.style.height = rand(150,300) + "px";
+				item.style.background = "rgb("+rand(0,255)+","+rand(0,255)+","+rand(0,255)+")";
+				
+				item.innerHTML = n;
+				
+				var index = 0;//存储高度最矮的那列的下标
+				for (var i = 0; i < cols.length; i++) {
+					if(cols[i].offsetHeight < cols[index].offsetHeight){
+						index = i;
+					}
+				}
+				//将新的内容存储在该列高最矮列中
+				cols[index].appendChild(item);
+			}
+			
+			function rand(x,y){
+				return Math.floor(Math.random()*(y-x+1)+x);
+			}
+		</script>
+	</body>
+</html>

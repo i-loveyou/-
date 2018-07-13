@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width: 1100px;
+				margin:0 auto;
+				overflow: hidden;
+			}
+			.col{
+				float:left;
+				width: 200px;
+				margin:0 10px;
+			}
+			.col>div{
+				margin:5px 0;
+				text-align: center;
+				color:white;
+				font-size: 30px;
+			}
+			#loading{
+				text-align: center;
+				color:green;
+			/*	display:none;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<p id="loading">...正在加载中...</p>
+		
+		<script>
+			var cols = document.querySelectorAll(".col");
+			var loading = document.getElementById("loading");
+			
+			function loadItems(count){
+				for(var i = 0;i<count;i++){
+					createItem();
+				}
+			}
+//			动态创建出一个新的内容  存放在列高最矮的那列
+			function createItem(){
+				var item = document.createElement("div");
+				//随机高度
+				item.style.height = rand(150,300) + "px";
+				item.style.background = "rgb("+rand(0,255)+","+rand(0,255)+","+rand(0,255)+")";
+				
+				
+				var index = 0;//存储高度最矮的那列的下标
+				for (var i = 0; i < cols.length; i++) {
+					if(cols[i].offsetHeight < cols[index].offsetHeight){
+						index = i;
+					}
+				}
+				//将新的内容存储在该列高最矮列中
+				cols[index].appendChild(item);
+			}
+			
+			function rand(x,y){
+				return Math.floor(Math.random()*(y-x+1)+x);
+			}
+			
+//			监测页面的滚动距离,当已经偏离出窗口可视区域的高度+当前窗口可视区域高度>最矮那列的高度时说明此时高度最矮的那列已经全部进入页面的可视区域,所以可在该时机加载更多数据
+			var t;
+			window.onscroll = function(){
+				//获取已经偏离出窗口可视区域的内容高度  即垂直滚动高度
+				var sh = document.documentElement.scrollTop || document.body.scrollTop;
+				//当前窗口可视区域高度
+				var vh = window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight;
+				//计算高度最矮那一列
+				var index = 0;
+				for (var i = 0; i < cols.length; i++) {
+					if(cols[i].offsetHeight < cols[index].offsetHeight){
+						index = i;
+					}
+				}
+				if(sh+vh > cols[index].offsetHeight){	
+					//加载更多   (请求后台数据 请求完成后动态添加展示)
+					//临时模拟  测试.
+					clearTimeout(t);
+						t = setTimeout(function(){
+							loading.style.diaplay = "none";
+							loadItems(30);
+							success = true;
+						},1500);
+					
+				}
+			}
+			
+			//默认显示50个
+			loadItems(50);
+		</script>
+	</body>
+</html>
