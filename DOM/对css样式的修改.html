@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#d1{
+				width:200px;
+				height:100px;
+				border:1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		
+		<script>
+			/*原生js中,通过style属性来获取元素的行间样式,设置元素的各种css样式
+			 * 
+			 */
+			var div = document.getElementById("d1");
+			
+			div.onclick = function(){
+				//若设置的属性属于复合属性  设置其子属性时  采用驼峰法
+				div.style.backgroundColor = "red";
+				
+				div.style.borderRadius = "20px";
+			}
+		</script>
+	</body>
+</html>

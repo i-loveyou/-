@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				position:relative;
+				width:400px;
+				height:300px;
+				border:10px solid;
+				margin:50px;
+				overflow:scroll;
+			}
+			.d1{
+				position:absolute;
+				left:100px;
+				top:50px;
+				width:600px;
+				height:500px;
+				padding:30px 20px;
+				margin:50px;
+				border:10px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="d1"></div>
+		</div>
+		
+		<script>
+			/*内尺寸client...
+			 * clientWidth		元素的width+padding
+			 * clientHeight		元素的height+padding
+			 * clientLeft（不常用）	元素左边框的宽度
+			 * clientTop（不常用）	元素上边框的宽度
+			 */
+			
+			/*外尺寸  offect...
+			 * offectWidth		元素的width+padding+border
+			 * offectHeight		元素的height+padding+border
+			 * offectLeft		获取当前元素左外边框距离其最近的定位父级元素的左内边框之间的距离
+			 * offectTop		获取当前元素上外边框距离其最近的定位父级元素的上内边框之间的距离
+			 * 
+			 * offsetParent		获取元素最近的定位父级元素
+			 * 若元素的所有祖先节点都没有定位属性，则offsetParent：
+			 * 		在标准浏览器下以及ie8+，offsetParent是body
+			 * 		ie低版本	offsetParent是html
+			 * 为了保证在不同浏览器不一致，需要重置html，body为同一样式
+			 */
+			
+			/*滚动尺寸 scroll...
+			 * scrollWidth		可滚动区域的宽度
+			 * scrollHeight		可滚动区域的高度
+			 * scrollLeft		水平滚动条的滚动距离
+			 * scrollTop		垂直滚动条的滚动距离
+			 */
+			
+			var d1 = document.querySelector(".d1");
+			
+			console.log(d1.clientWidth,d1.clientHeight);
+			console.log(d1.clientLeft,d1.clientTop);
+			
+			console.log(d1.offsetWidth,d1.offsetHeight);
+			
+			console.log(d1.offsetLeft);
+			console.log(d1.offsetTop);
+			
+			console.log(d1.offsetParent);
+			
+			console.log(d1.style.left);		//不是行间样式不能获取
+			
+			var box = document.querySelector(".box");
+			console.log(box.scrollWidth,box.scrollHeight);
+			//当滚动时
+			box.onscroll = function(){
+				console.log(box.scrollTop);
+				console.log(box.scrollLeft);
+			}
+		</script>
+	</body>
+</html>

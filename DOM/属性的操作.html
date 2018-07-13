@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="dl" index="1"></div>
+		<img src="" alt="" / data-src="">
+		
+		<script>
+//			元素的属性:
+//				系统自带属性 id class src style等...
+//				
+//				自定义属性 开发者根据需要添加的属性
+
+//			setAttribute("属性名",属性值)
+			var img = document.querySelector("img");
+			//若该属性已存在，则是修改
+			img.setAttribute("src","img/1.jpg");
+			//若该属性之前没有，则是添加
+			img.setAttribute("width","200");
+			//也可以设置自定义属性
+			img.setAttribute("aa","test");
+			//若适应该方法操作的是类名属性 使用class	多个属性值之间语法是空格间隔
+			img.setAttribute("class","tt bb");
+			
+//			getAttribute("属性名")  获取元素的某个属性值
+//			操作类名属性时:
+//				在标准浏览器和IE高版本下  使用class 
+//				在IE低版本（5,6,7）下使用className
+			console.log(img.getAttribute("src"));
+			
+			console.log(img.getAttribute("aa"));
+			
+			console.log(img.getAttribute("class"));
+			
+			/*.语法和[]的区别:
+				两者操作的都是行间属性
+			1.  .语法和[]方式只能获取通过.和[]方式设置的属性,不能获取写在行间的自定义属性,可以获取行间的自带属性
+			2.class属性，使用.和【】方式操作时，必须使用className
+			3. .语法后只能跟属性名，不能跟变量；而[]里可以跟变量
+			4.  .语法和[]方式设置的属性不会显示在行间，不能通过getAttribute来获取，setAttribute设置的会显示在行间，可以获取
+			*/
+			img.bb = "haha";
+			console.log(img.aa);	//undefind
+			console.log(img.bb);	//haha
+			
+			var dl = document.getElementById("dl");
+			//可以获取行间的自带属性
+			console.log(dl.id);
+			console.log(dl["id"]);
+			//不能获取写在行间的自定义属性
+			console.log(dl.index);
+			
+			
+			console.log(img.className);		//中括号和.语法都行
+			console.log(img["className"]);
+			
+			img.src;	
+			var a = "src";	
+//			img.a   不可以	a是变量
+			console.log(img["src"]);		//可以
+			console.log(img[a]);
+		</script>
+	</body>
+</html>

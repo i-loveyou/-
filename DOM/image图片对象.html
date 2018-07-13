@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			//创建图片对象
+			var img = new Image();
+			
+			/*onload
+			 * window.onload	当页面中的所有的资源（图片，音视频，DOM等）都加载完毕时
+			 * img.onload		当图片加载完毕时
+			 */
+			
+			img.onload = function(){
+				console.log(img.width,img.height);
+			}
+			//给图片的src赋值要写在onload事件绑定的后面，避免图片加载时还没有绑定onload事件
+			img.src = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1499538610,2515113318&fm=27&gp=0.jpg";
+			
+			
+			document.body.appendChild(img);
+		</script>
+	</body>
+</html>

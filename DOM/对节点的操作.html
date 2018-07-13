@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.d1{
+				width:120px;
+				height:100px;
+				border:1px solid
+			}
+		</style>
+	</head>
+	<body>
+		<div class="d1">
+			<button>点我呀</button>
+		</div>
+		<button id="clone">复制</button>
+		
+		<script>
+			/*
+			 * 创建节点
+			 */
+			//创建元素节点createElement("元素名")
+			var h = document.createElement("h1");
+			h.innerHTML = "DOM";
+			
+			//ele.appendChild()在ele元素内的最后添加子节点node
+			document.body.appendChild(h);
+			
+			var p = document.createElement("p");
+			//创建文本节点
+			var txt = document.createTextNode("文本对象模型");
+			p.appendChild(txt);
+//			document.body.appendChild(p);
+			
+			//插入节点
+			//ele.insertBefore(a,b)  在节点b的前面插入节点a   前提：保证b是ele的子节点
+			document.body.insertBefore(p,h);
+			
+			//替换节点 
+			//ele.replaceChild(a,b)  用a替换b
+			var a = document.createElement("a");
+			a.innerHTML = "DOM";	//如果不写内容不会继承，会为空
+			a.href = "###";
+			
+			document.body.replaceChild(a,h);
+			
+			//删除节点
+			//ele.removeChild(node)  从父节点ele中删除其子节点node
+			document.body.removeChild(p);
+			
+			//克隆（复制）节点
+			/*cloneNode（）
+			 * 参数：true  深复制：连同节点中的内容被复制
+			 * 		false 浅复制:只会复制该节点自身
+			 */
+			var btn = document.getElementById("clone");
+			var div = document.querySelector(".d1");
+			var child = div.getElementsByTagName("button")[0];
+			child.onclick = function(){
+				this.parentElement.style.background = "gold";
+			}
+			btn.onclick = function(){
+				var copyed = div.cloneNode(true);
+				document.body.appendChild(copyed);
+			}
+			
+//			cloneNode()复制时不会复制添加到dom节点中的js属性,如事件属性
+
+			//扩充了解
+			var frag = document.createDocumentFragment();
+			var wrap = document.createElement("div");
+			wrap.style.width = "200px";
+			wrap.style.border = "1px solid";
+			
+			var img = document.createElement("img");
+			img.src = "img/1.jpg";
+			img.width = "200";
+			img.height = "150";
+			
+			var des = document.createElement("p");
+			des.innerHTML = "哈哈哈";
+			
+			frag.appendChild(img);
+			frag.appendChild(des);
+			
+			wrap.appendChild(frag);
+			
+			document.body.appendChild(wrap);
+		</script>
+	</body>
+</html>

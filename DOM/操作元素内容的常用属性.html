@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="dl">
+			<p>哈哈哈哈</p>
+		</div>
+		
+		<script>
+//			innerHTML	获取或设置元素中所有的内容,当元素隐藏时，依然可以获取
+
+			var oDiv = document.getElementById("dl");
+			//获取
+			console.log(oDiv.innerHTML);
+			//设置（整体是一个替换的过程）
+			oDiv.innerHTML = "<a href='###'>链接</a>";
+			
+//			innerText 获取元素中的文本节点  获取时会去掉文字前后的换行
+//			使用时有兼容性,低版本ff(火狐)不支持使用,而是使用textContent,为了兼容低版本FF,需要封装一个兼容的获取方法
+			console.log(oDiv.innerText);
+			
+			oDiv.innerText = "啦啦啦啦";
+			
+//			封装一个兼容的获取文本的方法
+			function getInnerText(ele){
+				if(ele.innerText){
+					return ele.innerText;
+				}else{
+					return ele.textContent;
+				}
+			}
+			
+			console.log(getInnerText(oDiv));
+		</script>
+	</body>
+</html>
