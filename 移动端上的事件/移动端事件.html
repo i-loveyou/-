@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			#d1{
+				width: 80%;
+				height: 200px;
+				margin: 0 auto;
+				background:red;
+			}
+			#d2{
+				width: 0;
+				height: 20px;
+				background:blue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="d1"></div>
+		
+		<div id="d2"></div>
+		
+		<!--click事件多用于pc端，在移动端有延迟（大概300ms的延迟），造成用户感觉有卡顿的效果，移动端不推荐使用-->
+		<!--
+		在移动端使用触摸手势：
+		touchstart		手指触摸屏幕时
+		touchmove		手指在屏幕上滑动时
+		touchend		手指离开屏幕时
+		touchcancel		触摸被系统事件中断时  如电话或远程推送等
+		-->
+		<!--移动端绑定事件可以放心使用标准方法addEventListener()-->
+		<script>
+			var d1 =document.getElementById("d1");
+			
+			d1.addEventListener("touchstart",function(){
+				d1.innerHTML = "触摸了";
+				//事件对象
+				//获取的是当前屏幕上的触摸点的集合  其中存储的是一个个手指对象
+				event.touches;
+				//若获取其中的第一个触摸点  touches[0]
+				var t = event.touches[0];
+				//常用的触摸点对象的属性:
+				/*clientX / clientY
+				 * screenX / screenY
+				 * pageX / pageY		距离当前页面左上角的位置坐标
+				 */
+				
+				d1.innerHTML = "x:" + t.pageX + "\ny:" + t.pageY;
+				
+			},false);
+			
+			d1.addEventListener("touchmove",function(){
+				d1.innerHTML += "触摸滑动了";
+			});
+			
+			d1.addEventListener("touchend",function(){
+				d1.innerHTML = "触摸结束";
+			});
+			
+			d1.addEventListener("touchcancel",function(){
+				
+			});
+			
+			/*移动端对比PC端需要考虑性能优化：
+			 * 实现动画时：
+			 * 		1.改变元素的位置，尽量不要使用定位修改left，top属性，推荐使用transfrom属性，渲染时性能更好，动画相比更流畅
+			 * 		2.移动端进行动画时,尽量优先考虑使用css动画，若只能使用JS动画实现，则尽量避免使用计时器，优先考虑requestAnimationFrame()
+			 * 
+			 * 区别于计时器：requestAnimationFrame
+			 * 		1.不需要设置时间间隔。默认按浏览器的刷新频率
+			 * 		2.当窗口处于闲置状态时，会自动暂停当前的动画；节省浏览器消耗，优化内存。如果窗口激活状态，动画会继续暂停的动画
+			 */
+			
+			
+			var d2 = document.getElementById("d2");
+			var w = 0;
+			function test(){
+				w++;
+				if(w<100){
+					window.requestAnimationFrame(test);		//重复调用自身
+				}
+				d2.style.width = w + "%";
+			}
+			requestAnimationFrame(test);
+		</script>
+	</body>
+</html>

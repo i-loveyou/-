@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			//设备事件：触发该类事件，需要硬件支持
+			/*
+			 * 重力感应事件
+			 * devicemotion
+			 * 
+			 * 屏幕旋转
+			 * 
+			 * 
+			 * 磁力感应事件
+			 * deviceorientation
+			 * 
+			 * 
+			 * 都是给window对象绑定的
+			 */
+			//实现摇一摇
+			//实现原理：当两次加速计记录的加速度值，差值比较大，可认为用户此时在晃动手机
+			
+			//手机晃动前   加速计的值
+			var current = {x:0,y:0,z:0};
+			//手机晃动前   加速计的值
+			var after = {x:0,y:0,z:0};
+			
+			//定义加速器的最小差值
+			var min = 10;
+			
+			window.ondevicemotion = function(){
+				//获取加速器   重力加速度对象(包含设备的坐标信息)
+				var acce = event.accelerationIncludingGravity;
+				//记录此时加速器的值
+				current.x = acce.x;
+				current.y = acce.y;
+				current.z = acce.z;
+				//比较两次的差值    来判断是否晃动
+				if(Math.abs(after.x-current.x) >= min || Math.abs(after.y-current.y) >= min || Math.abs(after.z-current.z) >= min){
+					//此时表示  在摇晃设备   实现摇一摇功能
+					document.body.style.background = randColor();
+//					document.body.innerHTML = "张博健傻子";
+					//记录晃动后的值
+					after.x = current.x;
+					after.y = current.y;
+					after.z = current.z;
+				}
+			}
+			
+			function randColor(){
+				return "rgb(" + Math.floor(Math.random()*256) + "," +  Math.floor(Math.random()*256) + "," + Math.floor(Math.random()*256) + ")";
+			}
+		</script>
+		
+	</body>
+</html>
