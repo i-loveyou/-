@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.menu {
+				position: absolute;
+				width: 100px;
+				height: 90px;
+				background-color: gainsboro;
+				list-style: none;
+				top: 0;
+				left: 0;
+			}
+			
+			.menu li {
+				list-style: none;
+				text-align: center;
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+			}
+			
+			.menu li a {
+				color: black;
+				text-decoration: none;
+			}
+			
+			.overli {
+				background-color: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//菜单项数据
+			var menulist = [{
+				title: "百度一下",
+				url: "http://www.baidu.com"
+			}, {
+				title: "网易邮箱",
+				url: "http://mail.163.com"
+			}, {
+				title: "新浪微博",
+				url: "http://www.weibo.com"
+			}];
+			
+			//创建菜单ul
+			var newUl = document.createElement("ul");
+			
+			//点击鼠标右键调出菜单触发
+			window.oncontextmenu = function(e) {
+				var e = e || window.event;
+				
+				//设置ul样式类名
+				newUl.className = "menu";
+				
+				//判断当前newUl是否加载过 如果加载过清空
+				if(newUl.hasChildNodes()) {
+					newUl.innerHTML = "";
+				}
+				
+				//循环添加li菜单项
+				for(var i = 0; i < menulist.length; i++) {
+					
+					var newli = document.createElement("li");
+					newli.innerHTML = "<a href=\"" + menulist[i].url + "\" target=\"_blank\">" + menulist[i].title + "</a>";
+					newUl.appendChild(newli);
+					
+					//当鼠标移入当前菜单项时改变背景颜色和内部字体颜色
+					newli.onmouseenter = function() {
+						this.getElementsByTagName("a")[0].style.color = "white";
+						this.className = "overli";
+					}
+
+					newli.onmouseleave = function() {
+						this.getElementsByTagName("a")[0].style.color = "";
+						this.className = "";
+					}
+				}
+				//添加菜单到页面中
+				document.body.appendChild(newUl);
+				
+				//设置菜单出现的位置
+				newUl.style.top = e.clientY-1 + "px";
+				newUl.style.left = e.clientX-1 + "px";
+				
+				//阻止默认行为 屏蔽系统菜单
+		
+				if(window.event){
+					//IE取消浏览器默认行为方法
+					e.returnValue=false;
+					
+					e.cancelBubble();
+				}
+				else{
+					//取消浏览器默认行为方法
+					e.preventDefault();
+					
+					//阻止冒泡
+					e.stopPropagation();
+				}
+				
+			}
+			
+			//当点击页面其他地方时 关闭菜单
+			window.onclick = function() {
+				if(newUl.hasChildNodes()) {
+					newUl.innerHTML = "";
+					document.body.removeChild(newUl);
+				}
+			}
+		</script>
+	</body>
+
+</html>
