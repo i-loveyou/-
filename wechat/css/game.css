@@ -1,0 +1,261 @@
+*{
+	margin:0;
+	padding: 0;
+}
+html,body{
+	width:100%;
+	height:100%;
+}
+html{
+	/*方便用rem计算尺寸*/
+	font-size: 20px;
+}
+body{
+	font-size: 16px;
+}
+.wrap{
+	width: 100%;
+	height: 100%;
+}
+.preload,.page1,.page2,.page3{
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	left: 0;
+	top: 0;
+}
+.preload{
+	z-index:100;
+	background:#000;
+}
+.progress{
+	position: absolute;
+	width: 5rem;
+	height: 5rem;
+	background:red;
+	border-radius:50% ;
+	font-size: 1.5rem;
+	text-align: center;
+	line-height: 5rem;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+.page1,.page2,.page3{
+	display:none;
+}
+.page1{
+	background:url(../img/bg.jpg);
+	background-size: 100% 100%;
+	text-align: center;
+}
+img{
+	vertical-align: top;
+}
+.page1>img:nth-child(1){
+	width: 70%;
+	margin-top:3.5rem;
+}
+.page1>img:nth-child(2){
+	width: 90%;
+}
+.page1>img:nth-child(3){
+	width: 35%;
+	position: absolute;
+	bottom: 20%;
+	left: 0;
+	right: 0;
+	margin:0 auto;
+}
+.page1>img:nth-child(4){
+	width: 20%;
+	position: absolute;
+	left: 60%;
+	bottom: 20%;
+}
+.menuBar{
+	background:url(../img/p1_btns_wrap.png);
+	background-size:100% 100%;
+	padding: 0.5rem;
+	width: 90%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+	text-align: center;
+}
+.menuBar>img{
+	width: 23%;
+}
+.rank{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: rgba(0,0,0,0.8);
+	display: none;
+}
+.rank>ul{
+	list-style: none;
+	width: 75%;
+	height: 65%;
+	margin: 5rem auto 0;
+	background: url(../img/ranking_bg.png);
+	background-size:100% 100%;
+	padding-top: 20%;
+	position:relative;
+}
+.rank>ul>li{
+	overflow: hidden;
+	border-bottom:dashed;
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+	height:18%;
+}
+.rank>ul>li>*{
+	float:left;
+}
+.rank>ul>li>*:nth-child(2){
+	width:21%;
+}
+.rank>ul>li:nth-child(4){
+	padding-left:4%;
+}
+.rank>ul>li:nth-child(5){
+	padding-left:4%;
+}
+.rank>ul>li:nth-child(4)>img{
+	padding-left:6%;
+}
+.rank>ul>li:nth-child(5)>img{
+	padding-left:6%;
+}
+.closeBtn{
+	width: 31px;
+	height: 31px;
+	background: url(../img/close.png);
+	position: absolute;
+	right: -5px;
+	top: -5px;
+}
+.page2{
+	background:url(../img/bg2.png);
+	background-size:100% 100%;
+	text-align: center;
+	color:white;
+	overflow: hidden;
+}
+.message{
+	width: 90%;
+	margin: auto;
+	height: 7rem;
+	background:url(../img/p2_kuang.png);
+	background-size:100% 100%;
+	margin-top: 4rem;
+	text-align: center;
+	padding-top: 1rem;
+}
+.message>img{
+	width: 90%;
+	height: 70%;
+}
+.score_time{
+	width: 80%;                       
+	margin: auto;
+	color:white;
+}
+.count{                                      
+	display: inline-block;
+	width: 20%;
+	height: 3rem;
+	text-align: center;
+	font-size: 1.5rem;
+	background:url(../img/p2_scoring.png);
+	background-size:100% 100%;                                                     
+	line-height: 3rem;
+}
+.time{
+	display: inline-block;
+	width: 30%;
+	height: 3.5rem;
+	font-size:1.5rem;
+	line-height: 3.7rem;
+	text-align: center;
+	background: url(../img/shizhong.png);
+	background-size:100% 100%;
+}
+.moneyRoom{
+	width: 60%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	bottom: -40%;
+}
+.moneyRoom>img{
+	width: 100%;
+}
+.shou{
+	position:absolute;
+	width: 30%;
+	right: 5%;
+	bottom: 20%;
+}
+.qiang{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+}
+.page3{
+	background: url(../img/p3_bg.jpg);
+	background-size:100% 100%;
+	text-align: center;
+	color:white;
+}
+.page3>img:first-child{
+	width: 70%;
+	margin: 5rem auto;
+}
+#score{
+	font-size:1.5rem;
+}
+#best{
+	width: 70%;
+	margin: 1rem auto 0;
+	color:red;
+	height: 1.8rem;
+	line-height:1.8rem;
+	background-color: white;
+	border-radius: 0.5rem;
+}
+#again{
+	width: 35%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 3rem;
+	margin: auto;
+}
+.mFly{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	transform: translateY(0) scale(1);
+	animation:fly 1s;
+}
+@keyframes fly{
+	from{
+		transform:translateY(0) scale(1);
+	}
+	to{
+		transform:translateY(-1000px) scale(0.4);
+	}
+}
+
