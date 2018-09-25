@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/contact.css" />
+		<link rel="stylesheet" href="third/hddb/rocketTop.css" />
+		<link rel="stylesheet" href="third/bootstrap.min.css" />
+		<script src="third/ThreeCanvas.js"></script>
+		<script src="third/jquery-3.2.1.min.js"></script>
+		<script src="third/bootstrap.min.js"></script>
+		<script src="third/Snow.js"></script>
+		<script src="third/snowFall.js"></script>
+		<script src="third/hddb/rocketTop.js"></script>
+		<style>
+			canvas{
+				width:100% !important;
+				height:900px !important;				
+				position: absolute;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="header_wyl">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+				    <div class="navbar-header">
+				      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        	<span class="sr-only"></span>
+				        	<span class="icon-bar"></span>
+				       		<span class="icon-bar"></span>
+				        	<span class="icon-bar"></span>
+				      	</button>
+				      	<a class="navbar-brand" href="index.html">
+				      		<img src="img/Homeimg/shininglogo.png" width="100px" height="30px">
+				      	</a>
+				    </div>
+				    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+				      	<ul class="nav navbar-nav navbar-right state-login">
+							<li><a href="index.html">Home</a></li>
+				        	<li><a href="about.html">About</a></li>
+				        	<li><a href="redering.html">Redering</a></li>
+				        	<li><a href="3d.html">3D Animation</a></li>
+				        	<li><a href="bin.html">Bin</a></li>
+				        	<li><a href="contact.html">Contact</a></li>
+				      	</ul>
+				    </div>
+				</div>
+			</nav>
+		</div>
+		
+		<div class="body_wyl">
+			<img src="img/Contactimg/contact_place.png" alt="" />
+			<div class="message">
+				<p>Contacts: Sunshine</p>
+				<p>
+					<img src="img/Contactimg/contact_mail.jpg" alt="" />
+					 Email: eric@shining365.com
+				</p>
+			</div>
+			<div class="ip">
+				<span>
+					<img src="img/Contactimg/contact_phone.png" alt="" />
+					86 21 6598 6866-304 
+					<br />
+					&nbsp;&nbsp;&nbsp;&nbsp; +86 21 6598 6866-304
+				</span>
+				<span>
+					<img src="img/Contactimg/iphone.png" alt="" />
+					 +86 130 0000 0000
+				</span>
+				<span>
+					<img src="img/Contactimg/contact_add.png" alt="" />
+					1-5F.creative center building,No.2,1147 Lane, Siping Road,Yangpu District,Shangha
+				</span>
+			</div>
+		</div>
+		
+		<div class="footer_wyl">
+			<img src="img/Homeimg/footer0.jpg" alt="" />
+			<br />
+			<img src="img/Homeimg/footer1.jpg" alt="" />
+			<img src="img/Homeimg/footer2.jpg" alt="" />
+			<img src="img/Homeimg/footer3.jpg" alt="" />
+			<img src="img/Homeimg/footer4.jpg" alt="" />
+			<p>Copyright © 1998-2015 shining Group</p>
+		</div>
+		<!--回到顶部-->
+		<div id="shape">
+			<div class="shapeColor">
+				<div class="shapeFly">
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			//下雪了
+			$.snowFall({
+			//创建粒子数量，密度
+			particleNo: 500,
+			//粒子下拉速度
+			particleSpeed:30,
+			//粒子在垂直（Y轴）方向运动范围
+			particleY_Range:1300,
+			//粒子在垂直（X轴）方向运动范围
+			particleX_Range:1000,
+			//是否绑定鼠标事件
+			    bindMouse: false,
+			    //相机离Z轴原点距离
+			    zIndex:600,
+			  //摄像机视野角度
+			    angle:55,
+			    wind_weight:0
+			});
+			
+			//改变底部小图标图片路径
+			$(".footer_wyl img:first").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer0_h.jpg");
+			})
+			$(".footer_wyl img:first").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer0.jpg");
+			})
+			$(".footer_wyl img:nth-child(3)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer1_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(3)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer1.jpg");
+			})
+			$(".footer_wyl img:nth-child(4)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer2_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(4)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer2.jpg");
+			})
+			$(".footer_wyl img:nth-child(5)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer3_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(5)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer3.jpg");
+			})
+			$(".footer_wyl img:nth-child(6)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer4_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(6)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer4.jpg");
+			})
+		</script>
+	</body>
+</html>

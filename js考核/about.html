@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="third/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/about.css" />
+		<script src="third/ThreeCanvas.js"></script>
+		<script src="third/jquery-3.2.1.min.js"></script>
+		<script src="third/bootstrap.min.js"></script>
+		<script src="third/Snow.js"></script>
+		<script src="third/snowFall.js"></script>
+		<style>
+			canvas{
+				width:100% !important;
+				height:900px !important;				
+				position: absolute;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header_wyl">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+				    <div class="navbar-header">
+				      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        	<span class="sr-only"></span>
+				        	<span class="icon-bar"></span>
+				       		<span class="icon-bar"></span>
+				        	<span class="icon-bar"></span>
+				      	</button>
+				      	<a class="navbar-brand" href="index.html">
+				      		<img src="img/Homeimg/shininglogo.png" width="100px" height="30px">
+				      	</a>
+				    </div>
+				    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+				      	<ul class="nav navbar-nav navbar-right state-login">
+							<li><a href="index.html">Home</a></li>
+				        	<li><a href="about.html">About</a></li>
+				        	<li><a href="redering.html">Redering</a></li>
+				        	<li><a href="3d.html">3D Animation</a></li>
+				        	<li><a href="bin.html">Bin</a></li>
+				        	<li><a href="contact.html">Contact</a></li>
+				      	</ul>
+				    </div>
+				</div>
+			</nav>
+		</div>
+		
+		<div class="body_wyl">
+			<div class="top">
+				<p>About Us</p>
+				<span>
+					Shanghai Shining is a creative corporation which focuses on helping architects and owners turn their construction which is still in design stage into visual images or videos, perfectly showing the essence of construction.
+				</span>
+				<span>
+					Since the year of 1998, we have finished more than 20000 3D visualization creativities of all Kinds of architecture for nearly 2000 architect firms both at home and abroad. We have used 3D technology, shooting, drawing and architectonic to provide the clients with the services of CG images, CG animations, BIM and 3D products finally
+				</span>
+			</div>
+			<div class="bottom">
+				<ul>
+					<li><img src="img/Aboutimg/aedas.png" alt="" /></li>
+					<li><img src="img/Aboutimg/bdp.png" alt="" /></li>
+					<li><img src="img/Aboutimg/benoy.png" alt="" /></li>
+					<li><img src="img/Aboutimg/ch2mhill.png" alt="" /></li>
+					<li><img src="img/Aboutimg/edsa.png" alt="" /></li>
+					<li><img src="img/Aboutimg/gensler.png" alt="" /></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="footer_wyl">
+			<img src="img/Homeimg/footer0.jpg" alt="" />
+			<br />
+			<img src="img/Homeimg/footer1.jpg" alt="" />
+			<img src="img/Homeimg/footer2.jpg" alt="" />
+			<img src="img/Homeimg/footer3.jpg" alt="" />
+			<img src="img/Homeimg/footer4.jpg" alt="" />
+			<p>Copyright © 1998-2015 shining Group</p>
+		</div>
+		<script type="text/javascript">
+			//下雪了
+				$.snowFall({
+				//创建粒子数量，密度
+				particleNo: 500,
+				//粒子下拉速度
+				particleSpeed:30,
+				//粒子在垂直（Y轴）方向运动范围
+				particleY_Range:1300,
+				//粒子在垂直（X轴）方向运动范围
+				particleX_Range:1000,
+				//是否绑定鼠标事件
+				    bindMouse: false,
+				    //相机离Z轴原点距离
+				    zIndex:600,
+				  //摄像机视野角度
+				    angle:55,
+				    wind_weight:0
+				});
+			//改变底部小图标图片路径
+				$(".footer_wyl img:first").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer0_h.jpg");
+				})
+				$(".footer_wyl img:first").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer0.jpg");
+				})
+				$(".footer_wyl img:nth-child(3)").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer1_h.jpg");
+				})
+				$(".footer_wyl img:nth-child(3)").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer1.jpg");
+				})
+				$(".footer_wyl img:nth-child(4)").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer2_h.jpg");
+				})
+				$(".footer_wyl img:nth-child(4)").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer2.jpg");
+				})
+				$(".footer_wyl img:nth-child(5)").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer3_h.jpg");
+				})
+				$(".footer_wyl img:nth-child(5)").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer3.jpg");
+				})
+				$(".footer_wyl img:nth-child(6)").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer4_h.jpg");
+				})
+				$(".footer_wyl img:nth-child(6)").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer4.jpg");
+				})
+		</script>
+	</body>
+</html>

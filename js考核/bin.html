@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="third/hddb/rocketTop.css" />
+		<link rel="stylesheet" href="third/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bin.css" />
+		<script src="third/jquery-3.2.1.min.js"></script>
+		<script src="third/bootstrap.min.js"></script>
+		<script src="third/jquery.mousewheel.min.js"></script>
+		<script src="third/hddb/rocketTop.js"></script>
+	</head>
+	<body>
+		<div class="header_wyl">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+				    <div class="navbar-header">
+				      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        	<span class="sr-only"></span>
+				        	<span class="icon-bar"></span>
+				       		<span class="icon-bar"></span>
+				        	<span class="icon-bar"></span>
+				      	</button>
+				      	<a class="navbar-brand" href="index.html">
+				      		<img src="img/Homeimg/shininglogo.png" width="100px" height="30px">
+				      	</a>
+				    </div>
+				    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+				      	<ul class="nav navbar-nav navbar-right state-login">
+							<li><a href="index.html">Home</a></li>
+				        	<li><a href="about.html">About</a></li>
+				        	<li><a href="redering.html">Redering</a></li>
+				        	<li><a href="3d.html">3D Animation</a></li>
+				        	<li><a href="bin.html">Bin</a></li>
+				        	<li><a href="contact.html">Contact</a></li>
+				      	</ul>
+				    </div>
+				</div>
+			</nav>
+		</div>
+		
+		<div class="body_wyl">
+			<div class="div1">
+				<div class="scroll1">
+					<p>1 MODEL COMPLETION</p>
+					<span>Establishing and creating the vi sible and multi-dimension Architecture, Structural and MEP</span>
+					<br />
+					<img src="img/Binimg/BIM-p1-1.png" alt="" />
+					<img src="img/Binimg/BIM-p1-2.png" alt="" />
+					<img src="img/Binimg/BIM-p1-3.png" alt="" />
+				</div>
+				<img class="img_wyl" src="img/Binimg/building1-half-t.png" alt="" />
+			</div>
+			<div class="div2">
+				<div class="scroll2">
+					<p>1 MODEL COMPLETION</p>
+					<span>Establishing and creating the vi sible and multi-dimension Architecture, Structural and MEP</span>
+					<br />
+					<img src="img/Binimg/BIM-p2-1.jpg" alt="" />
+					<img src="img/Binimg/BIM-p2-2.jpg" alt="" />
+				</div>
+				<img class="img_wyl" src="img/Binimg/building1-half-b.png" alt="" />
+			</div>
+			<div class="div3">
+				<div class="scroll3">
+					<p>1 MODEL COMPLETION</p>
+					<span>Establishing and creating the vi sible and multi-dimension Architecture, Structural and MEP</span>
+					<br />
+					<img src="img/Binimg/BIM-p3-1.jpg" alt="" />
+					<img src="img/Binimg/BIM-p3-2.jpg" alt="" />
+				</div>
+				<img class="img_wyl" src="img/Binimg/building2-half-t.png" alt="" />
+			</div>
+			<div class="div4">
+				<div class="scroll4">
+					<p>1 MODEL COMPLETION</p>
+					<span>Establishing and creating the vi sible and multi-dimension Architecture, Structural and MEP</span>
+					<br />
+					<img src="img/Binimg/BIM-p4-1.jpg" alt="" />
+					<img src="img/Binimg/BIM-p4-2.jpg" alt="" />
+				</div>
+				<img class="img_wyl" src="img/Binimg/building2-half-b.png" alt="" />
+				<div class="footer_wyl">
+					<img src="img/Homeimg/footer0.jpg" alt="" />
+					<br />
+					<img src="img/Homeimg/footer1.jpg" alt="" />
+					<img src="img/Homeimg/footer2.jpg" alt="" />
+					<img src="img/Homeimg/footer3.jpg" alt="" />
+					<img src="img/Homeimg/footer4.jpg" alt="" />
+					<p>Copyright © 1998-2015 shining Group</p>
+				</div>
+			</div>
+		</div>
+		
+
+		
+		<!--回到顶部-->
+		<div id="shape">
+			<div class="shapeColor">
+				<div class="shapeFly">
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+		$(window).on('mousewheel', function(event, delta) {  
+//			console.log(delta);
+//			console.log($(window).height());
+			var direction = delta > 0 ? -1 : 1;
+//			console.log(direction);
+	        var step = $(window).height();            //可视区高度
+	        var cur_top = $(window).scrollTop();    //当前滚过的高度
+//	        var height = direction * step + cur_top;
+			
+//			console.log(height);
+			var height = direction * 750 + cur_top;
+			
+			$("html, body").animate({ scrollTop: height }, 500);
+			
+	        return false;  
+	    });
+	    //改变底部小图标图片路径
+			$(".footer_wyl img:first").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer0_h.jpg");
+			})
+			$(".footer_wyl img:first").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer0.jpg");
+			})
+			$(".footer_wyl img:nth-child(3)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer1_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(3)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer1.jpg");
+			})
+			$(".footer_wyl img:nth-child(4)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer2_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(4)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer2.jpg");
+			})
+			$(".footer_wyl img:nth-child(5)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer3_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(5)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer3.jpg");
+			})
+			$(".footer_wyl img:nth-child(6)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer4_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(6)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer4.jpg");
+			})
+		</script>
+	</body>
+</html>

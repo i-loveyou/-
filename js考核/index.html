@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="third/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script src="third/jquery-3.2.1.min.js"></script>
+		<script src="third/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="header_wyl">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+				    <div class="navbar-header">
+				      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        	<span class="sr-only"></span>
+				        	<span class="icon-bar"></span>
+				       		<span class="icon-bar"></span>
+				        	<span class="icon-bar"></span>
+				      	</button>
+				      	<a class="navbar-brand" href="index.html">
+				      		<img src="img/Homeimg/shininglogo.png" width="100px" height="30px">
+				      	</a>
+				    </div>
+				    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+				      	<ul class="nav navbar-nav navbar-right state-login">
+							<li><a href="index.html">Home</a></li>
+				        	<li><a href="about.html">About</a></li>
+				        	<li><a href="redering.html">Redering</a></li>
+				        	<li><a href="3d.html">3D Animation</a></li>
+				        	<li><a href="bin.html">Bin</a></li>
+				        	<li><a href="contact.html">Contact</a></li>
+				      	</ul>
+				    </div>
+				</div>
+			</nav>
+		</div>
+		
+		<div class="body_wyl">
+			<div class="tu1">
+				<div class="tu1_zuo">
+					<img src="img/Homeimg/home_pic_0.png" alt="" />
+				</div>
+				<div class="tu1_you">
+					<h3>RENDERINGS</h3>
+					<p>Masterplan、Public Building、commercial Building、Residential Building、Landscape Design</p>
+				</div>
+			</div>
+			<div class="tu2">
+				<div class="tu2_zuo">
+					<h3>RENDERINGS</h3>
+					<p>Masterplan、Public Building、commercial Building、Residential Building、Landscape Design</p>
+				</div>
+				<div class="tu2_you">
+					<img src="img/Homeimg/home_pic_1.png" alt="" />
+				</div>
+			</div>
+			<div class="tu3">
+				<div class="tu3_zuo">
+					<img src="img/Homeimg/home_pic_2.png" alt="" />
+				</div>
+				<div class="tu3_you">
+					<h3>RENDERINGS</h3>
+					<p>Masterplan、Public Building、commercial Building、Residential Building、Landscape Design</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer_wyl">
+			<img src="img/Homeimg/footer0.jpg" alt="" />
+			<br />
+			<img src="img/Homeimg/footer1.jpg" alt="" />
+			<img src="img/Homeimg/footer2.jpg" alt="" />
+			<img src="img/Homeimg/footer3.jpg" alt="" />
+			<img src="img/Homeimg/footer4.jpg" alt="" />
+			<p>Copyright © 1998-2015 shining Group</p>
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				//改变body图片路径
+				$(".tu1_zuo").mouseover(function(){
+					$(".tu1_zuo img").attr("src","img/Homeimg/home_pic_0_h.png");
+				});
+				$(".tu1_zuo").mouseout(function(){
+					$(".tu1_zuo img").attr("src","img/Homeimg/home_pic_0.png");
+				})
+				$(".tu2_you").mouseover(function(){
+					$(".tu2_you img").attr("src","img/Homeimg/home_pic_1_h.png");
+				});
+				$(".tu2_you").mouseout(function(){
+					$(".tu2_you img").attr("src","img/Homeimg/home_pic_1.png");
+				})
+				$(".tu3_zuo").mouseover(function(){
+					$(".tu3_zuo img").attr("src","img/Homeimg/home_pic_2_h.png");
+				});
+				$(".tu3_zuo").mouseout(function(){
+					$(".tu3_zuo img").attr("src","img/Homeimg/home_pic_2.png");
+				})
+				
+				//改变底部小图标图片路径
+				$(".footer_wyl img:first").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer0_h.jpg");
+				})
+				$(".footer_wyl img:first").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer0.jpg");
+				})
+				$(".footer_wyl img:nth-child(3)").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer1_h.jpg");
+				})
+				$(".footer_wyl img:nth-child(3)").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer1.jpg");
+				})
+				$(".footer_wyl img:nth-child(4)").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer2_h.jpg");
+				})
+				$(".footer_wyl img:nth-child(4)").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer2.jpg");
+				})
+				$(".footer_wyl img:nth-child(5)").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer3_h.jpg");
+				})
+				$(".footer_wyl img:nth-child(5)").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer3.jpg");
+				})
+				$(".footer_wyl img:nth-child(6)").mouseover(function(){
+					$(this).attr("src","img/Homeimg/footer4_h.jpg");
+				})
+				$(".footer_wyl img:nth-child(6)").mouseout(function(){
+					$(this).attr("src","img/Homeimg/footer4.jpg");
+				})
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="third/bootstrap.min.css" />
+		<link rel="stylesheet" href="third/hddb/rocketTop.css" />
+		<link rel="stylesheet" href="css/3d.css" />
+		<script src="third/jquery-3.2.1.min.js"></script>
+		<script src="third/bootstrap.min.js"></script>
+		<script src="third/hddb/rocketTop.js"></script>
+	</head>
+	<body>
+		<div class="header_wyl">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+				    <div class="navbar-header">
+				      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        	<span class="sr-only"></span>
+				        	<span class="icon-bar"></span>
+				       		<span class="icon-bar"></span>
+				        	<span class="icon-bar"></span>
+				      	</button>
+				      	<a class="navbar-brand" href="index.html">
+				      		<img src="img/Homeimg/shininglogo.png" width="100px" height="30px">
+				      	</a>
+				    </div>
+				    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+				      	<ul class="nav navbar-nav navbar-right state-login">
+							<li><a href="index.html">Home</a></li>
+				        	<li><a href="about.html">About</a></li>
+				        	<li><a href="redering.html">Redering</a></li>
+				        	<li><a href="3d.html">3D Animation</a></li>
+				        	<li><a href="bin.html">Bin</a></li>
+				        	<li><a href="contact.html">Contact</a></li>
+				      	</ul>
+				    </div>
+				</div>
+			</nav>
+		</div>
+		
+		<div class="beijin_wyl">
+			<img src="img/3Dimg/2-150Z2105915292.jpg" alt="" />
+			<div></div>
+		</div>
+		
+		<div class="body_wyl">
+			<ul>
+				<li>
+					<img src="img/3Dimg/1-1510121R410H3.jpg" alt="" />
+					<img src="img/3Dimg/play_small_b.png" alt="" />
+					<p>人生是条无名的河，是深是浅都要过；</p>
+				</li>
+				<li class="listyle">
+					<img src="img/3Dimg/1-1510121SHX34.jpg" alt="" />
+					<img src="img/3Dimg/play_small_b.png" alt="" />
+					<p>人生是条无名的河，是深是浅都要过；</p>
+				</li>
+				<li>
+					<img src="img/3Dimg/1-1510121T91XV.jpg" alt="" />
+					<img src="img/3Dimg/play_small_b.png" alt="" />
+					<p>人生是条无名的河，是深是浅都要过；</p>
+				</li>
+				<li>
+					<img src="img/3Dimg/1-1510121TP0U1.jpg" alt="" />
+					<img src="img/3Dimg/play_small_b.png" alt="" />
+					<p>人生是条无名的河，是深是浅都要过；</p>
+				</li>
+				<li class="listyle">
+					<img src="img/3Dimg/1-1510121TTOc.jpg" alt="" />
+					<img src="img/3Dimg/play_small_b.png" alt="" />
+					<p>人生是条无名的河，是深是浅都要过；</p>
+				</li>
+				<li>
+					<img src="img/3Dimg/1-1510121U004292.jpg" alt="" />
+					<img src="img/3Dimg/play_small_b.png" alt="" />
+					<p>人生是条无名的河，是深是浅都要过；</p>
+				</li>
+				<li>
+					<img src="img/3Dimg/1-1510121U04XL.jpg" alt="" />
+					<img src="img/3Dimg/play_small_b.png" alt="" />
+					<p>人生是条无名的河，是深是浅都要过；</p>
+				</li>
+				<li class="listyle">
+					<img src="img/3Dimg/1-1510121U305330.jpg" alt="" />
+					<img src="img/3Dimg/play_small_b.png" alt="" />
+					<p>人生是条无名的河，是深是浅都要过；</p>
+				</li>
+				<li>
+					<img src="img/3Dimg/1-1510121U33Ic.jpg" alt="" />
+					<img src="img/3Dimg/play_small_b.png" alt="" />
+					<p>人生是条无名的河，是深是浅都要过；</p>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="footer_wyl">
+			<img src="img/Homeimg/footer0.jpg" alt="" />
+			<br />
+			<img src="img/Homeimg/footer1.jpg" alt="" />
+			<img src="img/Homeimg/footer2.jpg" alt="" />
+			<img src="img/Homeimg/footer3.jpg" alt="" />
+			<img src="img/Homeimg/footer4.jpg" alt="" />
+			<p>Copyright © 1998-2015 shining Group</p>
+		</div>
+		
+		<!--回到顶部-->
+		<div id="shape">
+			<div class="shapeColor">
+				<div class="shapeFly">
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$("ul li").mouseover(function(){
+				$(this).children("img:nth-child(2)").css("opacity",1);
+			})
+			$("ul li").mouseout(function(){
+				$(this).children("img:nth-child(2)").css("opacity",0.3);
+			})
+			
+			//改变底部小图标图片路径
+			$(".footer_wyl img:first").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer0_h.jpg");
+			})
+			$(".footer_wyl img:first").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer0.jpg");
+			})
+			$(".footer_wyl img:nth-child(3)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer1_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(3)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer1.jpg");
+			})
+			$(".footer_wyl img:nth-child(4)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer2_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(4)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer2.jpg");
+			})
+			$(".footer_wyl img:nth-child(5)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer3_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(5)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer3.jpg");
+			})
+			$(".footer_wyl img:nth-child(6)").mouseover(function(){
+				$(this).attr("src","img/Homeimg/footer4_h.jpg");
+			})
+			$(".footer_wyl img:nth-child(6)").mouseout(function(){
+				$(this).attr("src","img/Homeimg/footer4.jpg");
+			})
+		</script>
+	</body>
+</html>
