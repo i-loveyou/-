@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			*{padding:0;margin:0;}
+			h3{
+				text-align: center;
+			}
+			table{
+				width: 700px;
+				margin: 50px auto;
+				text-align: center;
+			}
+			.tianjia{
+				width:500px;
+				margin:auto;
+			}
+			#tianjia{
+				width:150px;
+				background-color:cornflowerblue;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>学生信息管理系统</h3>
+		<table border="1" cellspacing="0" id="tab">
+			<tr>
+				<td>id</td>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+				<td>学校</td>
+				<td >操作</td>
+				<td >修改</td>
+			</tr>
+		</table>
+		<div class="tianjia">
+			<input type="text" placeholder="请输入id"/>
+			<input type="text" placeholder="请输入姓名"/>
+			<input type="text" placeholder="请输入年龄"/>
+			<input type="text" placeholder="请输入性别"/>
+			<input type="text" placeholder="请输入就读学校"/>
+			<button id="tianjia">添加</button>
+		</div>
+		<script type="text/javascript">
+			
+		function DB(){
+				//获取数据
+				$.ajax({
+				type:"get",
+				url:"http://127.0.0.1/PHP/ajax/zuoye/chuanru.php",
+				async:true,
+				dataType:"json",
+				success:function(data){
+					for(var i = 0;i < data.length;i++){
+						var tr = $("<tr />").appendTo($("table"));
+						for(var key in data[i]){
+							$("<td />").html(data[i][key]).appendTo(tr);
+						}
+						
+						//修改框架
+						var td = $("<td />").appendTo(tr);	
+						var div = $("<div>").appendTo(td);
+						var xiala = $("<select id='xuan'></select>").appendTo(div);
+						$("<input name='gai'>").appendTo(div);
+						$("<span>").html("修改").appendTo(div);
+						$("<option value='1'>姓名</option><option value='2'>年龄</option><option value='3'>性别</option><option value='4'>学校</option>").appendTo(xiala);
+					}
+
+					//样式
+					yangshi();
+					
+					//删除
+					shanchu();
+					
+					//添加
+					tianjia();
+					
+					//修改
+					xiugai();
+				}
+			});
+		}
+			
+		//样式设计
+		function yangshi(){
+			$("#tab tr:gt(0) td:nth-child(6)").css("background","aqua");
+			$("#tab tr:gt(0) td:nth-child(6)").css("cursor","pointer");
+			$("#tab tr:gt(0) td:nth-child(6)").mouseover(function(){
+				$(this).css("background","red");
+			});
+			$("#tab tr:gt(0) td:nth-child(6)").mouseout(function(){
+				$(this).css("background","aqua");
+			});
+			
+			$("span").css("background","yellow");
+			$("span").css("cursor","pointer");
+			$("span").mouseover(function(){
+				$(this).css("background","red");
+			});
+			$("span").mouseout(function(){
+				$(this).css("background","yellow");
+			})
+		}
+		
+		//删除
+		function shanchu(){
+			$("#tab tr:gt(0) td:nth-child(6)").click(function(){
+				var zhi = $(this).parent().children(0).html();
+				
+				var shan = $(this).parent();
+				$.ajax({
+					type:"get",
+					url:"http://127.0.0.1/PHP/ajax/zuoye/caozuo.php",
+					async:true,
+					data:{id:zhi},
+					dataType:"json",
+					success:function(data){
+						//console.log(data);
+						if(data == 1){
+//									$(this).parent().remove();
+							shan.remove();
+						}
+					}
+				});
+			})
+		}
+		
+		//添加
+		function tianjia(){
+			$("#tianjia").click(function(){
+				//alert("ok");
+				var vId = $(".tianjia input:eq(0)").val();
+				var vName = $(".tianjia input:eq(1)").val();
+				var vAge = $(".tianjia input:eq(2)").val();
+				var vSex = $(".tianjia input:eq(3)").val();
+				var vSchool = $(".tianjia input:eq(4)").val();
+				
+				//判断id是否有重复值
+				var sId = $("#tab tr:gt(0) td:nth-child(1)").text();
+				var idzhi = sId.search(vId)
+				
+				//console.log(name);
+				if(vName != "" && vAge != "" && vSex != "" && vSchool !="" && vId != "" && idzhi == -1 && vId >= 1){
+					$.ajax({
+						type:"get",
+						url:"http://127.0.0.1/PHP/ajax/zuoye/tianjia.php",
+						async:true,
+						data:{id:vId,name:vName,age:vAge,sex:vSex,school:vSchool},
+						dataType:"json",
+						success:function(data){
+							var tr = $("<tr />").appendTo($("table"));
+							$("<td />").html(vId).appendTo(tr);
+							$("<td />").html(vName).appendTo(tr);
+							$("<td />").html(vAge).appendTo(tr);
+							$("<td />").html(vSex).appendTo(tr);
+							$("<td />").html(vSchool).appendTo(tr);
+							$("<td />").html("删除").appendTo(tr);
+							
+							var td = $("<td />").appendTo(tr);	
+							var div = $("<div>").appendTo(td);
+							var xiala = $("<select id='xuan'></select>").appendTo(div);
+							$("<input name='gai'>").appendTo(div);
+							$("<span>").html("修改").appendTo(div);
+							$("<option value='1'>姓名</option><option value='2'>年龄</option><option value='3'>性别</option><option value='4'>学校</option>").appendTo(xiala);
+							
+							yangshi();
+							shanchu();
+							xiugai();
+						}
+					});
+				}else{
+					alert("添加的值不符合规定");
+				}
+			})
+		}
+		
+		//修改
+		function xiugai(){
+			$("span").click(function(){
+				var xuanze = $(this).siblings("select").children(":selected").val();
+				var xZhi = $(this).siblings("input").val();
+				var xId = $(this).parent().parent().siblings("td:eq(0)").text();
+				var hang = $(this).parent().parent().parent().index();
+				console.log(hang);
+				//console.log(xZhi);
+//				console.log(xId);
+				if(xZhi == ""){
+					alert("格式不正确");
+					return;
+				}
+
+				if(xuanze == 1){
+					$.ajax({
+						type:"get",
+						url:"http://127.0.0.1/PHP/ajax/zuoye/xiugai.php",
+						async:true,
+						data:{id:xId,name:xZhi},
+						dataType:"json",
+						success:function(data){
+							if(data == 1){
+								$("tr:eq("+hang+") td:eq("+xuanze+")").html(xZhi);
+							}
+						}
+					});
+				}else if(xuanze == 2){
+					$.ajax({
+						type:"get",
+						url:"http://127.0.0.1/PHP/ajax/zuoye/xiugai2.php",
+						async:true,
+						data:{id:xId,age:xZhi},
+						dataType:"json",
+						success:function(data){
+							if(data == 1){
+								$("tr:eq("+hang+") td:eq("+xuanze+")").html(xZhi);
+							}
+						}
+					});
+				}else if(xuanze == 3){
+					$.ajax({
+						type:"get",
+						url:"http://127.0.0.1/PHP/ajax/zuoye/xiugai3.php",
+						async:true,
+						data:{id:xId,sex:xZhi},
+						dataType:"json",
+						success:function(data){
+							if(data == 1){
+								$("tr:eq("+hang+") td:eq("+xuanze+")").html(xZhi);
+							}
+						}
+					});
+				}else if(xuanze == 4){
+					$.ajax({
+						type:"get",
+						url:"http://127.0.0.1/PHP/ajax/zuoye/xiugai4.php",
+						async:true,
+						data:{id:xId,school:xZhi},
+						dataType:"json",
+						success:function(data){
+							if(data == 1){
+								$("tr:eq("+hang+") td:eq("+xuanze+")").html(xZhi);
+							}
+						}
+					});
+				}else{
+					alert("出错了");
+				}
+			})
+		}
+		
+		DB();
+		</script>
+	</body>
+</html>
